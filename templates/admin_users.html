@@ -1,52 +1,23 @@
-{% extends 'base.html' %}
+{% extends 'admin_base.html' %}
 
 {% block title %}Manage Users - MyBlog{% endblock %}
 
 {% block content %}
-<div class="dashboard-container">
-    <div class="dashboard-sidebar">
-        <div class="sidebar-header">
-            <i class="fas fa-user-shield fa-3x"></i>
-            <h3>{{ session.get('firstname') }}</h3>
-            <span class="badge badge-admin">Admin</span>
-        </div>
-        
-        <nav class="sidebar-nav">
-            <a href="{{ url_for('admin.admin_dashboard') }}" class="nav-item">
-                <i class="fas fa-home"></i> Dashboard
-            </a>
-            <a href="{{ url_for('admin.admin_users') }}" class="nav-item active">
-                <i class="fas fa-users"></i> Manage Users
-            </a>
-            <a href="{{ url_for('admin.admin_add_user') }}" class="nav-item">
-                <i class="fas fa-user-plus"></i> Add User
-            </a>
-            <a href="{{ url_for('admin.admin_content') }}" class="nav-item">
-                <i class="fas fa-edit"></i> Edit Homepage
-            </a>
-            <a href="{{ url_for('user.profile') }}" class="nav-item">
-                <i class="fas fa-user-edit"></i> My Profile
-            </a>
-            <a href="{{ url_for('auth.logout') }}" class="nav-item" data-confirm="Are you sure you want to logout?" data-title="Logout">
-                <i class="fas fa-sign-out-alt"></i> Logout
-            </a>
-        </nav>
-    </div>
-    
-    <div class="dashboard-main">
-        <div class="dashboard-header">
-            <h1><i class="fas fa-users"></i> Manage Users</h1>
+<div class="admin-content">
+    <div class="admin-section">
+        <div class="admin-section-header">
+            <h2><i class="fas fa-users"></i> Manage Users</h2>
             <p>View, edit, and manage all user accounts.</p>
         </div>
         
-        <div class="action-bar">
+        <div class="action-bar" style="margin-bottom: 20px;">
             <a href="{{ url_for('admin.admin_add_user') }}" class="btn btn-primary">
                 <i class="fas fa-user-plus"></i> Add New User
             </a>
         </div>
         
-        <div class="users-table-section">
-            <table class="data-table">
+        <div class="admin-table-container">
+            <table class="admin-table">
                 <thead>
                     <tr>
                         <th>ID</th>

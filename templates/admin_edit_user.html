@@ -1,46 +1,17 @@
-{% extends 'base.html' %}
+{% extends 'admin_base.html' %}
 
 {% block title %}Edit User - MyBlog{% endblock %}
 
 {% block content %}
-<div class="dashboard-container">
-    <div class="dashboard-sidebar">
-        <div class="sidebar-header">
-            <i class="fas fa-user-shield fa-3x"></i>
-            <h3>{{ session.get('firstname') }}</h3>
-            <span class="badge badge-admin">Admin</span>
-        </div>
-        
-        <nav class="sidebar-nav">
-            <a href="{{ url_for('admin.admin_dashboard') }}" class="nav-item">
-                <i class="fas fa-home"></i> Dashboard
-            </a>
-            <a href="{{ url_for('admin.admin_users') }}" class="nav-item active">
-                <i class="fas fa-users"></i> Manage Users
-            </a>
-            <a href="{{ url_for('admin.admin_add_user') }}" class="nav-item">
-                <i class="fas fa-user-plus"></i> Add User
-            </a>
-            <a href="{{ url_for('admin.admin_content') }}" class="nav-item">
-                <i class="fas fa-edit"></i> Edit Homepage
-            </a>
-            <a href="{{ url_for('user.profile') }}" class="nav-item">
-                <i class="fas fa-user-edit"></i> My Profile
-            </a>
-            <a href="{{ url_for('auth.logout') }}" class="nav-item" data-confirm="Are you sure you want to logout?" data-title="Logout">
-                <i class="fas fa-sign-out-alt"></i> Logout
-            </a>
-        </nav>
-    </div>
-    
-    <div class="dashboard-main">
-        <div class="dashboard-header">
-            <h1><i class="fas fa-user-edit"></i> Edit User</h1>
+<div class="admin-content">
+    <div class="admin-section">
+        <div class="admin-section-header">
+            <h2><i class="fas fa-user-edit"></i> Edit User</h2>
             <p>Edit user account: {{ user.username }}</p>
         </div>
         
-        <div class="profile-form-container">
-            <form method="POST" action="{{ url_for('admin.admin_edit_user', user_id=user.id) }}" class="profile-form" data-confirm="Save changes to this user?" data-title="Update User">
+        <div class="admin-form-container">
+            <form method="POST" action="{{ url_for('admin.admin_edit_user', user_id=user.id) }}" class="admin-form" data-confirm="Save changes to this user?" data-title="Update User">
                 <div class="form-row">
                     <div class="form-group">
                         <label for="firstname"><i class="fas fa-user"></i> First Name *</label>

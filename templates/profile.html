@@ -1,41 +1,86 @@
+{% if session.get('role') == 'admin' %}
+{% extends 'admin_base.html' %}
+{% else %}
 {% extends 'base.html' %}
+{% endif %}
 
 {% block title %}My Profile - MyBlog{% endblock %}
 
 {% block content %}
+{% if session.get('role') == 'admin' %}
+<div class="admin-content">
+    <div class="admin-section">
+        <div class="admin-section-header">
+            <h2><i class="fas fa-user-edit"></i> My Profile</h2>
+            <p>Update your personal information below.</p>
+        </div>
+        
+        <div class="admin-form-container">
+            <form method="POST" action="{{ url_for('user.profile') }}" class="admin-form" data-confirm="Save changes to your profile?" data-title="Update Profile">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstname"><i class="fas fa-user"></i> First Name *</label>
+                        <input type="text" id="firstname" name="firstname" value="{{ user.firstname }}" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="middlename"><i class="fas fa-user"></i> Middle Name</label>
+                        <input type="text" id="middlename" name="middlename" value="{{ user.middlename or '' }}">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="lastname"><i class="fas fa-user"></i> Last Name *</label>
+                        <input type="text" id="lastname" name="lastname" value="{{ user.lastname }}" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email"><i class="fas fa-envelope"></i> Email *</label>
+                        <input type="email" id="email" name="email" value="{{ user.email }}" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="contact"><i class="fas fa-phone"></i> Contact Number *</label>
+                        <input type="text" id="contact" name="contact" value="{{ user.contact }}" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="birthday"><i class="fas fa-calendar"></i> Birthday *</label>
+                        <input type="date" id="birthday" name="birthday" value="{{ user.birthday }}" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label><i class="fas fa-at"></i> Username (cannot change)</label>
+                        <input type="text" value="{{ user.username }}" disabled>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-save"></i> Update Profile
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+{% else %}
 <div class="dashboard-container">
     <div class="dashboard-sidebar">
         <div class="sidebar-header">
             <i class="fas fa-user-circle fa-3x"></i>
             <h3>{{ session.get('firstname') }}</h3>
-            <span class="badge {% if session.get('role') == 'admin' %}badge-admin{% else %}badge-user{% endif %}">
-                {{ session.get('role')|capitalize }}
-            </span>
+            <span class="badge badge-user">User</span>
         </div>
         
         <nav class="sidebar-nav">
-            {% if session.get('role') == 'admin' %}
-            <a href="{{ url_for('admin.admin_dashboard') }}" class="nav-item">
-                <i class="fas fa-home"></i> Dashboard
-            </a>
-            <a href="{{ url_for('admin.admin_users') }}" class="nav-item">
-                <i class="fas fa-users"></i> Manage Users
-            </a>
-             <a href="{{ url_for('admin.admin_add_user') }}" class="nav-item">
-                <i class="fas fa-user-plus"></i> Add User
-            </a>
-            <a href="{{ url_for('admin.admin_content') }}" class="nav-item">
-                <i class="fas fa-edit"></i> Edit Homepage
-            </a>
-            {% else %}
             <a href="{{ url_for('user.user_dashboard') }}" class="nav-item">
                 <i class="fas fa-home"></i> Dashboard
             </a>
-            {% endif %}
             <a href="{{ url_for('user.profile') }}" class="nav-item active">
                 <i class="fas fa-user-edit"></i> My Profile
             </a>
-           
             <a href="{{ url_for('auth.logout') }}" class="nav-item" data-confirm="Are you sure you want to logout?" data-title="Logout">
                 <i class="fas fa-sign-out-alt"></i> Logout
             </a>
@@ -98,4 +143,5 @@
         </div>
     </div>
 </div>
+{% endif %}
 {% endblock %}
