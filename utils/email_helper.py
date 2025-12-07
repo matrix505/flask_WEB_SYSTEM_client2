@@ -11,10 +11,10 @@ def generate_otp():
 
 def send_otp_email(to_email, otp_code):
     """Send OTP to user's email"""
-    # Print OTP to console for testing (remove in production)
-    print(f"\n{'='*50}")
-    print(f"OTP Code for {to_email}: {otp_code}")
-    print(f"{'='*50}\n")
+    # # Print OTP to console for testing (remove in production)
+    # print(f"\n{'='*50}")
+    # print(f"OTP Code for {to_email}: {otp_code}")
+    # print(f"{'='*50}\n")
     
     try:
         # Create message
