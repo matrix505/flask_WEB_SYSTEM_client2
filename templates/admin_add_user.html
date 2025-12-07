@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+
+{% block title %}Add User - MyBlog{% endblock %}
+
+{% block content %}
+<div class="dashboard-container">
+    <div class="dashboard-sidebar">
+        <div class="sidebar-header">
+            <i class="fas fa-user-shield fa-3x"></i>
+            <h3>{{ session.get('firstname') }}</h3>
+            <span class="badge badge-admin">Admin</span>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <a href="{{ url_for('admin_dashboard') }}" class="nav-item">
+                <i class="fas fa-home"></i> Dashboard
+            </a>
+            <a href="{{ url_for('admin_users') }}" class="nav-item">
+                <i class="fas fa-users"></i> Manage Users
+            </a>
+            <a href="{{ url_for('admin_add_user') }}" class="nav-item active">
+                <i class="fas fa-user-plus"></i> Add User
+            </a>
+            <a href="{{ url_for('admin_content') }}" class="nav-item">
+                <i class="fas fa-edit"></i> Edit Homepage
+            </a>
+            <a href="{{ url_for('profile') }}" class="nav-item">
+                <i class="fas fa-user-edit"></i> My Profile
+            </a>
+            <a href="{{ url_for('logout') }}" class="nav-item" data-confirm="Are you sure you want to logout?" data-title="Logout">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </a>
+        </nav>
+    </div>
+    
+    <div class="dashboard-main">
+        <div class="dashboard-header">
+            <h1><i class="fas fa-user-plus"></i> Add New User</h1>
+            <p>Create a new user account.</p>
+        </div>
+        
+        <div class="profile-form-container">
+            <form method="POST" action="{{ url_for('admin_add_user') }}" class="profile-form" data-confirm="Create this new user account?" data-title="Add User" data-btn-class="btn-success">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstname"><i class="fas fa-user"></i> First Name *</label>
+                        <input type="text" id="firstname" name="firstname" placeholder="Juan" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="middlename"><i class="fas fa-user"></i> Middle Name</label>
+                        <input type="text" id="middlename" name="middlename" placeholder="Santos">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="lastname"><i class="fas fa-user"></i> Last Name *</label>
+                        <input type="text" id="lastname" name="lastname" placeholder="Dela Cruz" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email"><i class="fas fa-envelope"></i> Email *</label>
+                        <input type="email" id="email" name="email" placeholder="example@email.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="contact"><i class="fas fa-phone"></i> Contact Number *</label>
+                        <input type="text" id="contact" name="contact" placeholder="09123456789" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="birthday"><i class="fas fa-calendar"></i> Birthday *</label>
+                        <input type="date" id="birthday" name="birthday" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="role"><i class="fas fa-user-tag"></i> Role *</label>
+                        <select id="role" name="role" required>
+                            <option value="user">User</option>
+                            <option value="admin">Admin</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="username"><i class="fas fa-at"></i> Username *</label>
+                        <input type="text" id="username" name="username" placeholder="juandelacruz" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password"><i class="fas fa-lock"></i> Password *</label>
+                        <input type="password" id="password" name="password" placeholder="Minimum 6 characters" required minlength="6">
+                    </div>
+                </div>
+                
+                <div class="form-buttons">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-user-plus"></i> Create User
+                    </button>
+                    <a href="{{ url_for('admin_users') }}" class="btn btn-secondary">
+                        <i class="fas fa-arrow-left"></i> Back to Users
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,57 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+env/
+.venv/
+.env/
+
+# Environment variables
+.env
+*.env
+config.local.py
+
+# IDE / Editor settings
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+logs/
+
+# Database files (local)
+*.db
+*.sqlite3
+
+# Flask specific
+instance/
+.webassets-cache
+
+dist/
+build/
+*.egg-info/
+*.egg
+
+.coverage
+htmlcov/
+.pytest_cache/
+.tox/
+
+.ipynb_checkpoints/
+
+*.pem
+*.key
+secrets.py
+
+discord_webhook.py

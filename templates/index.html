@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block title %}Home - MyBlog{% endblock %}
+
+{% block content %}
+<div class="home-hero">
+    <div class="hero-content">
+        <h1 class="hero-title">{{ content.get('site_title', 'Welcome to my Website!') }}</h1>
+    </div>
+</div>
+
+<div class="home-main">
+    <div class="owner-card">
+        <div class="owner-image">
+            <img src="{{ url_for('static', filename='images/profile.png') }}" alt="Profile Picture">
+        </div>
+        <h2 class="owner-name">{% if admin %}{{ admin.firstname }} {{ admin.lastname }}{% else %}Admin{% endif %}</h2>
+        <p class="owner-quote">"{{ content.get('tagline', 'Hello! I am a passionate developer.') }}"</p>
+        {% if admin %}
+        <div class="owner-info">
+            <span><i class="fas fa-envelope"></i> {{ admin.email }}</span>
+            <span><i class="fas fa-birthday-cake"></i> {{ admin.birthday }}</span>
+        </div>
+        {% endif %}
+    </div>
+    
+    <div class="about-section">
+        <h3><i class="fas fa-user"></i> About Me</h3>
+        <p>{{ content.get('about_me', 'I enjoy learning new technologies and creating web applications.') }}</p>
+    </div>
+    
+    <div class="dream-card">
+        <div class="dream-icon">
+            <i class="fas fa-rocket"></i>
+        </div>
+        <div class="dream-info">
+            <span class="dream-label">{{ content.get('dream_job_title', 'My Dream Job') }}</span>
+            <span class="dream-value">{{ content.get('dream_job_text', 'Full-Stack Web Developer!') }}</span>
+        </div>
+    </div>
+    
+    {% if not session.get('loggedIn') %}
+    <div class="games-promo">
+        <div class="promo-icon">
+            <i class="fas fa-gamepad"></i>
+        </div>
+        <div class="promo-content">
+            <h3>Access my list of games!</h3>
+            <p>Register now to access our collection of fun and exciting games.</p>
+            <a href="{{ url_for('register') }}" class="btn btn-promo">
+                <i class="fas fa-user-plus"></i> Register now
+            </a>
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}Verify OTP - MyBlog{% endblock %}
+
+{% block content %}
+<div class="auth-container">
+    <div class="auth-box">
+        <div class="auth-header">
+            <i class="fas fa-envelope-open-text"></i>
+            <h2>Verify OTP</h2>
+            <p>We sent a 6-digit code to <strong>{{ email }}</strong></p>
+        </div>
+        
+        <form method="POST" action="{{ url_for('verify_otp') }}" class="auth-form">
+            <div class="form-group">
+                <label for="otp"><i class="fas fa-key"></i> Enter OTP Code</label>
+                <input type="text" id="otp" name="otp" placeholder="123456" maxlength="6" required 
+                       style="text-align: center; font-size: 24px; letter-spacing: 8px;">
+            </div>
+            
+            <button type="submit" class="btn btn-primary btn-block">
+                <i class="fas fa-check-circle"></i> Verify
+            </button>
+        </form>
+        
+        <div class="auth-footer">
+            <p>Didn't receive the code? <a href="{{ url_for('resend_otp') }}">Resend OTP</a></p>
+            <p><small>OTP expires in 5 minutes</small></p>
+        </div>
+    </div>
+</div>
+{% endblock %}

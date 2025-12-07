@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}My Website{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <a href="{{ url_for('index') }}">
+                No name yet
+            </a>
+        </div>
+        <button class="nav-toggle" onclick="toggleNav()">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="nav-links" id="navLinks">
+            <a href="{{ url_for('index') }}"><i class="fas fa-home"></i> Home</a>
+
+            {% if session.get('loggedIn') %}
+                {% if session.get('role') == 'admin' %}
+                    <a href="{{ url_for('admin_dashboard') }}"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                    <a href="{{ url_for('games') }}" class="nav-games-btn"><i class="fas fa-gamepad"></i> Games</a>
+                {% else %}
+                    <a href="{{ url_for('user_dashboard') }}"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                    <a href="{{ url_for('games') }}" class="nav-games-btn"><i class="fas fa-gamepad"></i> Games</a>
+                {% endif %}
+            {% else %}
+                <a href="{{ url_for('login') }}"><i class="fas fa-sign-in-alt"></i> Login</a>
+                <a href="{{ url_for('register') }}"><i class="fas fa-user-plus"></i> Register</a>
+            {% endif %}
+        </div>
+    </nav>
+
+    <div class="flash-messages">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="flash-message {{ category }}">
+                        {{ message }}
+                        <span class="close-btn" onclick="this.parentElement.remove()">&times;</span>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+
+    <main class="main-content">
+        {% block content %}{% endblock %}
+    </main>
+
+    <div id="confirmModal" class="modal-overlay" style="display:none;">
+        <div class="modal-box">
+            <div class="modal-header">
+                <i class="fas fa-question-circle"></i>
+                <h3 id="modalTitle">Confirm Action</h3>
+            </div>
+            <p id="modalMessage">Are you sure you want to proceed?</p>
+            <div class="modal-buttons">
+                <button id="modalCancel" class="btn btn-secondary btn-sm">
+                    <i class="fas fa-times"></i> Cancel
+                </button>
+                <button id="modalConfirm" class="btn btn-primary btn-sm">
+                    <i class="fas fa-check"></i> Confirm
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // confirmation
+        function showConfirm(title, message, onConfirm, confirmBtnClass) {
+            var modal = document.getElementById('confirmModal');
+            document.getElementById('modalTitle').textContent = title;
+            document.getElementById('modalMessage').textContent = message;
+            
+            var confirmBtn = document.getElementById('modalConfirm');
+            confirmBtn.className = 'btn btn-sm ' + (confirmBtnClass || 'btn-primary');
+            
+            modal.style.display = 'flex';
+            
+            document.getElementById('modalConfirm').onclick = function() {
+                modal.style.display = 'none';
+                onConfirm();
+            };
+            document.getElementById('modalCancel').onclick = function() {
+                modal.style.display = 'none';
+            };
+        }
+        
+        // Handle confirm links (only <a> tags with data-confirm)
+        document.addEventListener('click', function(e) {
+            var target = e.target.closest('a[data-confirm]');
+            if (target && target.tagName === 'A') {
+                e.preventDefault();
+                var message = target.getAttribute('data-confirm');
+                var title = target.getAttribute('data-title') || 'Confirm Action';
+                var btnClass = target.getAttribute('data-btn-class') || 'btn-primary';
+                var href = target.getAttribute('href');
+                
+                if (href) {
+                    showConfirm(title, message, function() {
+                        window.location.href = href;
+                    }, btnClass);
+                }
+            }
+        });
+        
+        // Handle confirm forms (only on actual submit)
+        document.addEventListener('submit', function(e) {
+            var form = e.target;
+            if (form.tagName === 'FORM' && form.hasAttribute('data-confirm') && !form.hasAttribute('data-confirmed')) {
+                e.preventDefault();
+                var message = form.getAttribute('data-confirm');
+                var title = form.getAttribute('data-title') || 'Confirm Action';
+                var btnClass = form.getAttribute('data-btn-class') || 'btn-primary';
+                
+                showConfirm(title, message, function() {
+                    form.setAttribute('data-confirmed', 'true');
+                    form.submit();
+                }, btnClass);
+            }
+        });
+
+        // Auto-hide flash messages after 5 seconds
+        setTimeout(function() {
+            var flashMessages = document.querySelectorAll('.flash-message');
+            flashMessages.forEach(function(msg) {
+                msg.style.opacity = '0';
+                setTimeout(function() { msg.remove(); }, 500);
+            });
+        }, 5000);
+        
+        // Toggle mobile navigation
+        function toggleNav() {
+            var navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('nav-active');
+        }
+    </script>
+</body>
+</html>
