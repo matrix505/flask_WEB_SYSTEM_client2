@@ -2,55 +2,44 @@
 
 {% block title %}Dashboard{% endblock %}
 
+
+
 {% block content %}
-<div class="user-content">
-    <div class="user-page-header">
-        <h1>Hello, {{ user.firstname }}!</h1>
-        <p>Account overview</p>
+<div class="user-content minimal-dashboard">
+    <div class="dashboard-header">
+        <span class="dashboard-greeting">Hi, {{ user.firstname }}</span>
     </div>
-    
-    <div style="display: flex; justify-content: center; margin-bottom: 32px;">
-        <a href="{{ url_for('user.games') }}" class="minimal-game-btn">
-            <span class="game-icon"><i class="fas fa-gamepad"></i></span>
-            <span class="game-text">Play Games</span>
-        </a>
-    </div>
-    
-    <div class="user-info-card">
-        <div class="info-card-header">
-            <h2><i class="fas fa-id-card"></i> Account Information</h2>
-        </div>
-        <div class="info-card-body">
-            <div class="info-grid">
-                <div class="info-item">
-                    <span class="info-label"><i class="fas fa-at"></i> Username</span>
-                    <span class="info-value">{{ user.username }}</span>
-                </div>
-                <div class="info-item">
-                    <span class="info-label"><i class="fas fa-user"></i> Full Name</span>
-                    <span class="info-value">{{ user.firstname }} {{ user.middlename or '' }} {{ user.lastname }}</span>
-                </div>
-                <div class="info-item">
-                    <span class="info-label"><i class="fas fa-envelope"></i> Email</span>
-                    <span class="info-value">{{ user.email }}</span>
-                </div>
-                <div class="info-item">
-                    <span class="info-label"><i class="fas fa-phone"></i> Contact</span>
-                    <span class="info-value">{{ user.contact }}</span>
-                </div>
-                <div class="info-item">
-                    <span class="info-label"><i class="fas fa-calendar"></i> Birthday</span>
-                    <span class="info-value">{{ user.birthday }}</span>
-                </div>
-                <div class="info-item">
-                    <span class="info-label"><i class="fas fa-check-circle"></i> Status</span>
-                    <span class="info-value"><span class="status-badge active">Active</span></span>
+    <div class="dashboard-cards">
+        <div class="card account-details">
+            <div class="account-avatar">{{ user.firstname[0] }}</div>
+            <div class="card-body">
+                <div class="card-title">{{ user.firstname }} {{ user.lastname }}</div>
+                <div class="card-sub">@{{ user.username }}</div>
+                <div class="account-info">
+                    <div><strong>Email:</strong> {{ user.email }}</div>
+                    <div><strong>Contact:</strong> {{ user.contact or '—' }}</div>
+                    <div><strong>Birthday:</strong> {{ user.birthday or '—' }}</div>
                 </div>
             </div>
-            <div class="info-card-footer">
-                <a href="{{ url_for('user.profile') }}" class="btn btn-primary btn-sm">
-                    <i class="fas fa-edit"></i> Edit Profile
-                </a>
+        </div>
+        <div class="card recent-games">
+            <div class="game-avatar">
+                <i class="fas fa-gamepad"></i>
+            </div>
+            <div class="card-body">
+                <div class="card-title">Recent Game Played</div>
+                <div class="card-sub">
+                    {% if recent_game %}
+                        {{ recent_game.title }}
+                    {% else %}
+                        No recent games played
+                    {% endif %}
+                </div>
+                {% if recent_game %}
+                <div class="game-info">
+                    <div><strong>Last Played:</strong> {{ recent_game.last_played }}</div>
+                </div>
+                {% endif %}
             </div>
         </div>
     </div>

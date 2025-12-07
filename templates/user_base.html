@@ -26,7 +26,7 @@
                 <i class="fas fa-home"></i>
                 <span>Dashboard</span>
             </a>
-            <a href="{{ url_for('user.games') }}" class="user-nav-link {% if request.endpoint == 'user.games' %}active{% endif %}">
+            <a href="{{ url_for('user.games') }}" class="user-nav-link nav-games-btn {% if request.endpoint == 'user.games' %}active{% endif %}" style="background:#d32f2f;color:#fff;border-radius:20px;padding:6px 12px;display:flex;align-items:center;gap:6px;margin-left:18px;">
                 <i class="fas fa-gamepad"></i>
                 <span>Games</span>
             </a>
@@ -44,8 +44,11 @@
                 <div class="user-dropdown-menu" id="userDropdown">
                     <div class="dropdown-header">
                         <span class="dropdown-name">{{ session.get('firstname') }} {{ session.get('lastname') }}</span>
-                        <span class="dropdown-role">Member</span>
+                        <span class="dropdown-role">User</span>
                     </div>
+                    <a href="{{ url_for('user.profile') }}" class="dropdown-item">
+                        <i class="fas fa-user"></i> My profile
+                    </a>
                     <a href="{{ url_for('auth.logout') }}" class="dropdown-item" data-confirm="Are you sure you want to logout?" data-title="Logout">
                         <i class="fas fa-sign-out-alt"></i> Logout
                     </a>

@@ -26,9 +26,7 @@ def admin_required(f):
             flash('Admin access required!', 'error')
             return redirect(url_for('user.user_dashboard'))
         return f(*args, **kwargs)
-    return decorated_function
-
-# ============ ADMIN ROUTES ============
+    return decorated_function 
 
 @admin_bp.route('/dashboard')
 @admin_required

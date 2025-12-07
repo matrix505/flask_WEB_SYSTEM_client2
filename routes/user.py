@@ -22,19 +22,25 @@ def login_required(f):
 @user_bp.route('/dashboard')
 @login_required
 def user_dashboard():
-    """User dashboard"""
+    """User dashboard page"""
     if session.get('role') == 'admin':
         return redirect(url_for('admin.admin_dashboard'))
-    
     user = models.get_user_by_id(session.get('user_id'))
     return render_template('user_dashboard.html', user=user)
 
-@user_bp.route('/profile', methods=['GET', 'POST'])
+
+@user_bp.route('/profile')
 @login_required
 def profile():
-    """User profile page"""
+    """User profile page (view only)"""
     user = models.get_user_by_id(session.get('user_id'))
-    
+    return render_template('profile.html', user=user)
+
+@user_bp.route('/edit_profile', methods=['GET', 'POST'])
+@login_required
+def edit_profile():
+    """Edit profile page"""
+    user = models.get_user_by_id(session.get('user_id'))
     if request.method == 'POST':
         firstname = request.form.get('firstname')
         middlename = request.form.get('middlename', '')
@@ -42,29 +48,19 @@ def profile():
         birthday = request.form.get('birthday')
         contact = request.form.get('contact')
         email = request.form.get('email')
-        
         # Validation
         if not all([firstname, lastname, birthday, contact, email]):
             flash('Please fill all required fields!', 'error')
-            return render_template('profile.html', user=user)
-        
-        # Check if email is taken by another user
+            return render_template('edit_profile.html', user=user)
         existing = models.get_user_by_email(email)
         if existing and existing['id'] != user['id']:
             flash('Email already used by another user!', 'error')
-            return render_template('profile.html', user=user)
-        
-        # Update user
-        models.update_user(user['id'], firstname, middlename, lastname, 
-                          birthday, contact, email)
-        
-        # Update session
+            return render_template('edit_profile.html', user=user)
+        models.update_user(user['id'], firstname, middlename, lastname, birthday, contact, email)
         session['firstname'] = firstname
-        
         flash('Profile updated successfully!', 'success')
         return redirect(url_for('user.profile'))
-    
-    return render_template('profile.html', user=user)
+    return render_template('edit_profile.html', user=user)
 
 @user_bp.route('/games')
 @login_required
