@@ -7,65 +7,65 @@
     <div class="auth-card auth-card-wide">
         <div class="auth-card-header">
             <h1>Create Account</h1>
-            <p>Fill in your details to get started</p>
+            <p>create your account</p>
         </div>
         
         <form method="POST" action="{{ url_for('auth.register') }}" class="auth-form" id="registerForm">
             <div class="form-section">
-                <h3 class="section-title">Personal Information</h3>
-                <div class="form-grid form-grid-3">
+                <div class="section-title">Personal</div>
+                <div class="form-grid form-grid-2">
                     <div class="form-field">
-                        <label for="firstname">First Name *</label>
+                        <label for="firstname">First Name</label>
                         <input type="text" id="firstname" name="firstname" placeholder="Juan" required>
                     </div>
                     
                     <div class="form-field">
-                        <label for="middlename">Middle Name</label>
-                        <input type="text" id="middlename" name="middlename" placeholder="Santos">
-                    </div>
-                    
-                    <div class="form-field">
-                        <label for="lastname">Last Name *</label>
+                        <label for="lastname">Last Name</label>
                         <input type="text" id="lastname" name="lastname" placeholder="Dela Cruz" required>
                     </div>
                 </div>
                 
+                <div class="form-field">
+                    <label for="middlename">Middle Name (Optional)</label>
+                    <input type="text" id="middlename" name="middlename" placeholder="Santos">
+                </div>
+                
                 <div class="form-grid form-grid-2">
                     <div class="form-field">
-                        <label for="email">Email Address *</label>
+                        <label for="email">Email</label>
                         <input type="email" id="email" name="email" placeholder="juan@email.com" required>
                     </div>
                     
                     <div class="form-field">
-                        <label for="contact">Contact Number *</label>
+                        <label for="contact">Phone</label>
                         <input type="text" id="contact" name="contact" placeholder="09123456789" required>
                     </div>
                 </div>
                 
                 <div class="form-grid form-grid-2">
                     <div class="form-field">
-                        <label for="birthday">Birthday *</label>
+                        <label for="birthday">Birthday</label>
                         <input type="date" id="birthday" name="birthday" required>
                     </div>
                     
                     <div class="form-field">
-                        <label for="username">Username *</label>
+                        <label for="username">Username</label>
                         <input type="text" id="username" name="username" placeholder="juandelacruz" required>
                     </div>
                 </div>
             </div>
             
             <div class="form-section">
-                <h3 class="section-title">Security</h3>
+                <div class="section-title">Security</div>
                 <div class="form-grid form-grid-2">
                     <div class="form-field">
-                        <label for="password">Password *</label>
+                        <label for="password">Password</label>
                         <input type="password" id="password" name="password" placeholder="Min. 6 characters" required minlength="6">
                     </div>
                     
                     <div class="form-field">
-                        <label for="confirm_password">Confirm Password *</label>
-                        <input type="password" id="confirm_password" name="confirm_password" placeholder="Re-enter password" required>
+                        <label for="confirm_password">Confirm</label>
+                        <input type="password" id="confirm_password" name="confirm_password" placeholder="Re-enter" required>
                     </div>
                 </div>
             </div>
@@ -74,14 +74,6 @@
                 Create Account
             </button>
         </form>
-        
-        <div class="auth-divider">
-            <span>or</span>
-        </div>
-        
-        <div class="auth-link">
-            <p>Already have an account? <a href="{{ url_for('auth.login') }}">Sign in</a></p>
-        </div>
     </div>
 </div>
 
