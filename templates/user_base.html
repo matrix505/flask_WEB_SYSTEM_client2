@@ -26,7 +26,6 @@
                 <i class="fas fa-home"></i>
                 <span>Dashboard</span>
             </a>
-            <!-- Profile button removed -->
             <a href="{{ url_for('user.games') }}" class="user-nav-link {% if request.endpoint == 'user.games' %}active{% endif %}">
                 <i class="fas fa-gamepad"></i>
                 <span>Games</span>
@@ -47,7 +46,6 @@
                         <span class="dropdown-name">{{ session.get('firstname') }} {{ session.get('lastname') }}</span>
                         <span class="dropdown-role">Member</span>
                     </div>
-                    <!-- Profile button removed from dropdown -->
                     <a href="{{ url_for('auth.logout') }}" class="dropdown-item" data-confirm="Are you sure you want to logout?" data-title="Logout">
                         <i class="fas fa-sign-out-alt"></i> Logout
                     </a>
@@ -56,7 +54,6 @@
         </div>
     </nav>
 
-    <!-- Mobile Sidebar -->
     <div class="user-sidebar-overlay" id="userSidebarOverlay" onclick="toggleUserSidebar()"></div>
     <aside class="user-mobile-sidebar" id="userSidebar">
         <div class="mobile-sidebar-header">

@@ -1134,19 +1134,24 @@ a {
 
 .admin-cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 16px;
-    margin-bottom: 24px;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 10px;
+    margin-bottom: 18px;
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .admin-card {
     background: #fff;
-    border-radius: 12px;
-    padding: 20px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    border-radius: 8px;
+    padding: 10px 10px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 6px;
+    align-items: center;
+    min-width: 0;
     transition: box-shadow 0.2s;
 }
 
@@ -1155,15 +1160,15 @@ a {
 }
 
 .admin-card-icon {
-    width: 48px;
-    height: 48px;
+    width: 26px;
+    height: 26px;
     background: linear-gradient(135deg, #006400, #228B22);
-    border-radius: 12px;
+    border-radius: 6px;
     display: flex;
     align-items: center;
     justify-content: center;
     color: #fff;
-    font-size: 20px;
+    font-size: 13px;
 }
 
 .admin-card-info {
@@ -1172,25 +1177,25 @@ a {
 
 .admin-card-info .card-label {
     display: block;
-    font-size: 12px;
+    font-size: 9px;
     color: #999;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    margin-bottom: 4px;
+    margin-bottom: 1px;
 }
 
 .admin-card-info .card-value {
     display: block;
-    font-size: 1.5rem;
-    font-weight: 700;
+    font-size: 0.95rem;
+    font-weight: 600;
     color: #1a1a1a;
 }
 
 .card-link {
     display: flex;
     align-items: center;
-    gap: 6px;
-    font-size: 13px;
+    gap: 4px;
+    font-size: 11px;
     color: #006400;
     font-weight: 500;
     text-decoration: none;
