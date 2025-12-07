@@ -14,7 +14,6 @@
     <nav class="navbar">
         <div class="nav-brand">
             <a href="{{ url_for('auth.index') }}">
-                No name yet
             </a>
         </div>
         <button class="nav-toggle" onclick="toggleNav()">
@@ -26,9 +25,7 @@
             {% if session.get('loggedIn') %}
                 {% if session.get('role') == 'admin' %}
                     <a href="{{ url_for('admin.admin_dashboard') }}"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
-                    <a href="{{ url_for('user.games') }}" class="nav-games-btn" style="background:#d32f2f;color:#fff;border-radius:50%;width:40px;height:40px;display:flex;align-items:center;justify-content:center;padding:0;margin-left:10px;">
-                        <i class="fas fa-gamepad"></i>
-                    </a>
+                   
                 {% else %}
                     <a href="{{ url_for('user.user_dashboard') }}"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
                     

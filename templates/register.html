@@ -16,29 +16,29 @@
                 <div class="form-grid form-grid-2">
                     <div class="form-field">
                         <label for="firstname">First Name</label>
-                        <input type="text" id="firstname" name="firstname" placeholder="Juan" required>
+                        <input type="text" id="firstname" name="firstname" placeholder="Enter First Name" required>
                     </div>
                     
                     <div class="form-field">
                         <label for="lastname">Last Name</label>
-                        <input type="text" id="lastname" name="lastname" placeholder="Dela Cruz" required>
+                        <input type="text" id="lastname" name="lastname" placeholder="Enter Last Name" required>
                     </div>
                 </div>
                 
                 <div class="form-field">
                     <label for="middlename">Middle Name (Optional)</label>
-                    <input type="text" id="middlename" name="middlename" placeholder="Santos">
+                    <input type="text" id="middlename" name="middlename" placeholder="Enter Middle Name">
                 </div>
                 
                 <div class="form-grid form-grid-2">
                     <div class="form-field">
                         <label for="email">Email</label>
-                        <input type="email" id="email" name="email" placeholder="juan@email.com" required>
+                        <input type="email" id="email" name="email" placeholder="Enter Email" required>
                     </div>
                     
                     <div class="form-field">
                         <label for="contact">Phone</label>
-                        <input type="text" id="contact" name="contact" placeholder="09123456789" required>
+                        <input type="text" id="contact" name="contact" placeholder="Enter Phone Number" required>
                     </div>
                 </div>
                 
@@ -50,7 +50,7 @@
                     
                     <div class="form-field">
                         <label for="username">Username</label>
-                        <input type="text" id="username" name="username" placeholder="juandelacruz" required>
+                        <input type="text" id="username" name="username" placeholder="Enter Username" required>
                     </div>
                 </div>
             </div>
@@ -78,6 +78,8 @@
 </div>
 
 <script>
+<script>
+    // Form validation
     document.getElementById('registerForm').addEventListener('submit', function(e) {
         var password = document.getElementById('password').value;
         var confirmPassword = document.getElementById('confirm_password').value;
@@ -92,5 +94,6 @@
             alert('Password must be at least 6 characters!');
         }
     });
+</script>
 </script>
 {% endblock %}

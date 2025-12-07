@@ -625,6 +625,24 @@ a {
     background: rgba(255, 255, 255, 0.1);
 }
 
+.form-feedback {
+    font-size: 11px;
+    margin-top: 4px;
+    min-height: 14px;
+}
+
+.form-feedback.success {
+    color: #4CAF50;
+}
+
+.form-feedback.error {
+    color: #f44336;
+}
+
+.form-feedback.checking {
+    color: #ff9800;
+}
+
 /* Form Sections */
 .form-section {
     margin-bottom: 20px;
