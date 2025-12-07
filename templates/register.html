@@ -10,7 +10,7 @@
             <p>Fill in your details to get started</p>
         </div>
         
-        <form method="POST" action="{{ url_for('register') }}" class="auth-form" id="registerForm">
+        <form method="POST" action="{{ url_for('auth.register') }}" class="auth-form" id="registerForm">
             <div class="form-section">
                 <h3 class="section-title">Personal Information</h3>
                 <div class="form-grid form-grid-3">
@@ -80,7 +80,7 @@
         </div>
         
         <div class="auth-link">
-            <p>Already have an account? <a href="{{ url_for('login') }}">Sign in</a></p>
+            <p>Already have an account? <a href="{{ url_for('auth.login') }}">Sign in</a></p>
         </div>
     </div>
 </div>

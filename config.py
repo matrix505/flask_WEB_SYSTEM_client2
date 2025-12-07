@@ -2,8 +2,8 @@
 import os
 
 # Flask App Configuration
-SECRET_KEY = 'my_secret_key_12345'
-ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
+SECRET_KEY = 'secret'
+
 # Database Configuration for XAMPP MySQL
 DB_CONFIG = {
     'host': 'localhost',
@@ -22,3 +22,5 @@ EMAIL_CONFIG = {
 
 # OTP Settings
 OTP_EXPIRY_MINUTES = 5
+
+Image_EXTENSIONS = {'png', 'jpg', 'jpeg'}

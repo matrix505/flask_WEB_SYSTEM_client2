@@ -12,22 +12,22 @@
         </div>
         
         <nav class="sidebar-nav">
-            <a href="{{ url_for('admin_dashboard') }}" class="nav-item">
+            <a href="{{ url_for('admin.admin_dashboard') }}" class="nav-item">
                 <i class="fas fa-home"></i> Dashboard
             </a>
-            <a href="{{ url_for('admin_users') }}" class="nav-item">
+            <a href="{{ url_for('admin.admin_users') }}" class="nav-item">
                 <i class="fas fa-users"></i> Manage Users
             </a>
-            <a href="{{ url_for('admin_add_user') }}" class="nav-item">
+            <a href="{{ url_for('admin.admin_add_user') }}" class="nav-item">
                 <i class="fas fa-user-plus"></i> Add User
             </a>
-            <a href="{{ url_for('admin_content') }}" class="nav-item active">
+            <a href="{{ url_for('admin.admin_content') }}" class="nav-item active">
                 <i class="fas fa-edit"></i> Edit Homepage
             </a>
-            <a href="{{ url_for('profile') }}" class="nav-item">
+            <a href="{{ url_for('user.profile') }}" class="nav-item">
                 <i class="fas fa-user-edit"></i> My Profile
             </a>
-            <a href="{{ url_for('logout') }}" class="nav-item" data-confirm="Are you sure you want to logout?" data-title="Logout">
+            <a href="{{ url_for('auth.logout') }}" class="nav-item" data-confirm="Are you sure you want to logout?" data-title="Logout">
                 <i class="fas fa-sign-out-alt"></i> Logout
             </a>
         </nav>
@@ -41,7 +41,7 @@
         
         <div class="profile-form-container" style="margin-bottom: 20px;">
             <h3 style="margin-bottom: 15px; color: #1a1a1a;"><i class="fas fa-image"></i> Profile Image</h3>
-            <form method="POST" action="{{ url_for('admin_upload_profile') }}" enctype="multipart/form-data" class="profile-form" data-confirm="Upload new profile image?" data-title="Update Image">
+            <form method="POST" action="{{ url_for('admin.admin_upload_profile') }}" enctype="multipart/form-data" class="profile-form" data-confirm="Upload new profile image?" data-title="Update Image">
                 <div class="form-group">
                     <label for="profile_image"><i class="fas fa-camera"></i> Select Image (PNG, JPG, JPEG)</label>
                     <div style="display: flex; align-items: center; gap: 15px;">
@@ -57,7 +57,7 @@
         
         <div class="profile-form-container">
             <h3 style="margin-bottom: 15px; color: #1a1a1a;"><i class="fas fa-file-alt"></i> Homepage Text Content</h3>
-            <form method="POST" action="{{ url_for('admin_content') }}" class="profile-form" data-confirm="Save changes to homepage?" data-title="Update Content">
+            <form method="POST" action="{{ url_for('admin.admin_content') }}" class="profile-form" data-confirm="Save changes to homepage?" data-title="Update Content">
                 <div class="form-group">
                     <label for="site_title"><i class="fas fa-heading"></i> Site Title</label>
                     <input type="text" id="site_title" name="site_title" value="{{ content.get('site_title', '') }}" placeholder="Welcome to my Website!">
@@ -87,7 +87,7 @@
                     <button type="submit" class="btn btn-primary">
                         <i class="fas fa-save"></i> Save Changes
                     </button>
-                    <a href="{{ url_for('index') }}" class="btn btn-secondary" target="_blank">
+                    <a href="{{ url_for('auth.index') }}" class="btn btn-secondary" target="_blank">
                         <i class="fas fa-eye"></i> Preview Homepage
                     </a>
                 </div>

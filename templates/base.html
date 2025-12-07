@@ -10,7 +10,7 @@
 <body>
     <nav class="navbar">
         <div class="nav-brand">
-            <a href="{{ url_for('index') }}">
+            <a href="{{ url_for('auth.index') }}">
                 No name yet
             </a>
         </div>
@@ -18,19 +18,19 @@
             <i class="fas fa-bars"></i>
         </button>
         <div class="nav-links" id="navLinks">
-            <a href="{{ url_for('index') }}"><i class="fas fa-home"></i> Home</a>
+            <a href="{{ url_for('auth.index') }}"><i class="fas fa-home"></i> Home</a>
 
             {% if session.get('loggedIn') %}
                 {% if session.get('role') == 'admin' %}
-                    <a href="{{ url_for('admin_dashboard') }}"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
-                    <a href="{{ url_for('games') }}" class="nav-games-btn"><i class="fas fa-gamepad"></i> Games</a>
+                    <a href="{{ url_for('admin.admin_dashboard') }}"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                    <a href="{{ url_for('user.games') }}" class="nav-games-btn"><i class="fas fa-gamepad"></i> Games</a>
                 {% else %}
-                    <a href="{{ url_for('user_dashboard') }}"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
-                    <a href="{{ url_for('games') }}" class="nav-games-btn"><i class="fas fa-gamepad"></i> Games</a>
+                    <a href="{{ url_for('user.user_dashboard') }}"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                    <a href="{{ url_for('user.games') }}" class="nav-games-btn"><i class="fas fa-gamepad"></i> Games</a>
                 {% endif %}
             {% else %}
-                <a href="{{ url_for('login') }}"><i class="fas fa-sign-in-alt"></i> Login</a>
-                <a href="{{ url_for('register') }}"><i class="fas fa-user-plus"></i> Register</a>
+                <a href="{{ url_for('auth.login') }}"><i class="fas fa-sign-in-alt"></i> Login</a>
+                <a href="{{ url_for('auth.register') }}"><i class="fas fa-user-plus"></i> Register</a>
             {% endif %}
         </div>
     </nav>

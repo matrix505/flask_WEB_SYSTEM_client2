@@ -12,13 +12,13 @@
         </div>
         
         <nav class="sidebar-nav">
-            <a href="{{ url_for('user_dashboard') }}" class="nav-item active">
+            <a href="{{ url_for('user.user_dashboard') }}" class="nav-item active">
                 <i class="fas fa-home"></i> Dashboard
             </a>
-            <a href="{{ url_for('profile') }}" class="nav-item">
+            <a href="{{ url_for('user.profile') }}" class="nav-item">
                 <i class="fas fa-user-edit"></i> My Profile
             </a>
-            <a href="{{ url_for('logout') }}" class="nav-item" data-confirm="Are you sure you want to logout?" data-title="Logout">
+            <a href="{{ url_for('auth.logout') }}" class="nav-item" data-confirm="Are you sure you want to logout?" data-title="Logout">
                 <i class="fas fa-sign-out-alt"></i> Logout
             </a>
         </nav>
@@ -38,7 +38,7 @@
                 <div class="card-content">
                     <h3>Profile</h3>
                     <p>View and update your profile information.</p>
-                    <a href="{{ url_for('profile') }}" class="btn btn-sm">View Profile</a>
+                    <a href="{{ url_for('user.profile') }}" class="btn btn-sm">View Profile</a>
                 </div>
             </div>
             
@@ -49,7 +49,7 @@
                 <div class="card-content">
                     <h3>Games</h3>
                     <p>Play fun games and have a good time!</p>
-                    <a href="{{ url_for('games') }}" class="btn btn-sm">Play Games</a>
+                    <a href="{{ url_for('user.games') }}" class="btn btn-sm">Play Games</a>
                 </div>
             </div>
         </div>

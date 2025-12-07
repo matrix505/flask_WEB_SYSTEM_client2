@@ -12,22 +12,22 @@
         </div>
         
         <nav class="sidebar-nav">
-            <a href="{{ url_for('admin_dashboard') }}" class="nav-item active">
+            <a href="{{ url_for('admin.admin_dashboard') }}" class="nav-item active">
                 <i class="fas fa-home"></i> Dashboard
             </a>
-            <a href="{{ url_for('admin_users') }}" class="nav-item">
+            <a href="{{ url_for('admin.admin_users') }}" class="nav-item">
                 <i class="fas fa-users"></i> Manage Users
             </a>
-            <a href="{{ url_for('admin_add_user') }}" class="nav-item">
+            <a href="{{ url_for('admin.admin_add_user') }}" class="nav-item">
                 <i class="fas fa-user-plus"></i> Add User
             </a>
-            <a href="{{ url_for('admin_content') }}" class="nav-item">
+            <a href="{{ url_for('admin.admin_content') }}" class="nav-item">
                 <i class="fas fa-edit"></i> Edit Homepage
             </a>
-            <a href="{{ url_for('profile') }}" class="nav-item">
+            <a href="{{ url_for('user.profile') }}" class="nav-item">
                 <i class="fas fa-user-edit"></i> My Profile
             </a>
-            <a href="{{ url_for('logout') }}" class="nav-item" data-confirm="Are you sure you want to logout?" data-title="Logout">
+            <a href="{{ url_for('auth.logout') }}" class="nav-item" data-confirm="Are you sure you want to logout?" data-title="Logout">
                 <i class="fas fa-sign-out-alt"></i> Logout
             </a>
         </nav>
@@ -47,7 +47,7 @@
                 <div class="card-content">
                     <h3>Total Users</h3>
                     <p class="big-number">{{ users|length }}</p>
-                    <a href="{{ url_for('admin_users') }}" class="btn btn-sm">View All</a>
+                    <a href="{{ url_for('admin.admin_users') }}" class="btn btn-sm">View All</a>
                 </div>
             </div>
             
@@ -58,7 +58,7 @@
                 <div class="card-content">
                     <h3>Add User</h3>
                     <p>Create a new user account.</p>
-                    <a href="{{ url_for('admin_add_user') }}" class="btn btn-sm">Add Now</a>
+                    <a href="{{ url_for('admin.admin_add_user') }}" class="btn btn-sm">Add Now</a>
                 </div>
             </div>
             
@@ -106,7 +106,7 @@
                             </span>
                         </td>
                         <td>
-                            <a href="{{ url_for('admin_edit_user', user_id=u.id) }}" class="btn btn-xs btn-edit">
+                            <a href="{{ url_for('admin.admin_edit_user', user_id=u.id) }}" class="btn btn-xs btn-edit">
                                 <i class="fas fa-edit"></i>
                             </a>
                         </td>
@@ -114,7 +114,7 @@
                     {% endfor %}
                 </tbody>
             </table>
-            <a href="{{ url_for('admin_users') }}" class="btn btn-primary">View All Users</a>
+            <a href="{{ url_for('admin.admin_users') }}" class="btn btn-primary">View All Users</a>
         </div>
     </div>
 </div>

@@ -12,22 +12,22 @@
         </div>
         
         <nav class="sidebar-nav">
-            <a href="{{ url_for('admin_dashboard') }}" class="nav-item">
+            <a href="{{ url_for('admin.admin_dashboard') }}" class="nav-item">
                 <i class="fas fa-home"></i> Dashboard
             </a>
-            <a href="{{ url_for('admin_users') }}" class="nav-item">
+            <a href="{{ url_for('admin.admin_users') }}" class="nav-item">
                 <i class="fas fa-users"></i> Manage Users
             </a>
-            <a href="{{ url_for('admin_add_user') }}" class="nav-item active">
+            <a href="{{ url_for('admin.admin_add_user') }}" class="nav-item active">
                 <i class="fas fa-user-plus"></i> Add User
             </a>
-            <a href="{{ url_for('admin_content') }}" class="nav-item">
+            <a href="{{ url_for('admin.admin_content') }}" class="nav-item">
                 <i class="fas fa-edit"></i> Edit Homepage
             </a>
-            <a href="{{ url_for('profile') }}" class="nav-item">
+            <a href="{{ url_for('user.profile') }}" class="nav-item">
                 <i class="fas fa-user-edit"></i> My Profile
             </a>
-            <a href="{{ url_for('logout') }}" class="nav-item" data-confirm="Are you sure you want to logout?" data-title="Logout">
+            <a href="{{ url_for('auth.logout') }}" class="nav-item" data-confirm="Are you sure you want to logout?" data-title="Logout">
                 <i class="fas fa-sign-out-alt"></i> Logout
             </a>
         </nav>
@@ -40,7 +40,7 @@
         </div>
         
         <div class="profile-form-container">
-            <form method="POST" action="{{ url_for('admin_add_user') }}" class="profile-form" data-confirm="Create this new user account?" data-title="Add User" data-btn-class="btn-success">
+            <form method="POST" action="{{ url_for('admin.admin_add_user') }}" class="profile-form" data-confirm="Create this new user account?" data-title="Add User" data-btn-class="btn-success">
                 <div class="form-row">
                     <div class="form-group">
                         <label for="firstname"><i class="fas fa-user"></i> First Name *</label>
@@ -101,7 +101,7 @@
                     <button type="submit" class="btn btn-primary">
                         <i class="fas fa-user-plus"></i> Create User
                     </button>
-                    <a href="{{ url_for('admin_users') }}" class="btn btn-secondary">
+                    <a href="{{ url_for('admin.admin_users') }}" class="btn btn-secondary">
                         <i class="fas fa-arrow-left"></i> Back to Users
                     </a>
                 </div>
