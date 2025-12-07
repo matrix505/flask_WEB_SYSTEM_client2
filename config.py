@@ -1,10 +1,10 @@
-# config.py - Database and App Configuration
+
 import os
 
 # Flask App Configuration
 SECRET_KEY = 'secret'
 
-# Database Configuration for XAMPP MySQL
+
 DB_CONFIG = {
     'host': 'localhost',
     'user': 'root',
@@ -20,7 +20,6 @@ EMAIL_CONFIG = {
     'password': 'izfhgluxowcgundp'
 }
 
-# OTP Settings
 OTP_EXPIRY_MINUTES = 5
 
 Image_EXTENSIONS = {'png', 'jpg', 'jpeg'}

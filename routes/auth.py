@@ -1,7 +1,7 @@
 # routes/auth.py - Authentication Routes
 from flask import Blueprint, render_template, request, redirect, url_for, session, flash
 import models
-from email_helper import generate_otp, send_otp_email
+from utils.email_helper import generate_otp, send_otp_email
 
 auth_bp = Blueprint('auth', __name__)
 
