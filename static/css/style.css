@@ -688,6 +688,34 @@ a {
     text-decoration: none;
 }
 
+/* OTP Footer */
+.auth-footer-otp {
+    text-align: center;
+    margin-top: 24px;
+}
+
+.auth-footer-otp p {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 13px;
+    margin-bottom: 8px;
+}
+
+.auth-footer-otp a {
+    color: #9DC183;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.auth-footer-otp a:hover {
+    color: #b5d19d;
+}
+
+.auth-footer-otp .otp-expire {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 12px;
+}
+
 /* Responsive */
 @media (max-width: 600px) {
     .auth-card {
