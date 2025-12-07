@@ -88,6 +88,7 @@ Go to: [http://127.0.0.1:5000](http://127.0.0.1:5000)
 
 ---
 
+
 ## 📁 Project Structure
 
 ```
@@ -123,6 +124,31 @@ flask_app2/
     ├── admin_content.html
     └── 404.html
 ```
+
+---
+
+## 🗂️ HTML Templates Explained
+
+This project uses Jinja2 HTML templates for each page. Here’s what each file does:
+
+- **base.html**: The main layout for all pages. It has the navigation bar, flash messages, and a content block. Other templates extend this file.
+- **index.html**: The homepage. Shows the admin’s info, a welcome message, and dynamic content set by the admin.
+- **login.html**: The login page. Lets users enter their username and password to sign in.
+- **register.html**: The registration page. New users fill out their personal info to create an account.
+- **verify_otp.html**: After registering, users enter a 6-digit code sent to their email to verify their account.
+- **user_base.html**: The base layout for user pages (dashboard, profile, games). Has a user-specific navbar and sidebar.
+- **user_dashboard.html**: The user’s dashboard. Shows account info and a button to play games.
+- **profile.html**: Lets users (and admins) view and edit their profile information.
+- **games.html**: The games page. Shows game options for users and admins.
+- **admin_base.html**: The base layout for admin pages. Has an admin-specific navbar and sidebar.
+- **admin_dashboard.html**: The admin’s dashboard. Shows quick stats, recent users, and links to admin actions.
+- **admin_users.html**: Admin page to view, edit, activate/deactivate, and manage all user accounts.
+- **admin_add_user.html**: Admin page to add a new user manually.
+- **admin_edit_user.html**: Admin page to edit an existing user’s details.
+- **admin_content.html**: Admin page to edit the homepage content and upload the profile image.
+- **404.html**: The error page shown when a user visits a non-existent page (Page Not Found).
+
+All templates use Jinja2 syntax (curly braces and percent signs) to insert dynamic data from Python.
 
 ---
 
