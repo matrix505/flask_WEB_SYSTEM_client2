@@ -66,4 +66,35 @@ def edit_profile():
 @login_required
 def games():
     """Games page - only for verified users"""
-    return render_template('games.html')
+    # Sample games data - replace with actual database query when games are implemented
+    games_data = [
+        {
+            'id': 1,
+            'title': 'Snake Game',
+            'description': 'Classic snake game where you control a snake to eat food and grow longer.',
+            'image': '/static/images/snake.jpg',
+            'url': '/play/snake'
+        },
+        {
+            'id': 2,
+            'title': 'Tetris',
+            'description': 'Arrange falling blocks to create complete lines and score points.',
+            'image': '/static/images/tetris.jpg',
+            'url': '/play/tetris'
+        },
+        {
+            'id': 3,
+            'title': 'Puzzle Quest',
+            'description': 'Solve challenging puzzles and brain teasers to test your logic.',
+            'image': '/static/images/puzzle.jpg',
+            'url': '/play/puzzle'
+        },
+        {
+            'id': 4,
+            'title': 'Card Memory',
+            'description': 'Match pairs of cards in this memory game to improve your concentration.',
+            'image': '/static/images/memory.jpg',
+            'url': '/play/memory'
+        }
+    ]
+    return render_template('games.html', games=games_data)
