@@ -1,99 +1,77 @@
-{% extends 'base.html' %}
+{% extends 'admin_base.html' %}
 
 {% block title %}Admin Dashboard - MyBlog{% endblock %}
 
 {% block content %}
-<div class="dashboard-container">
-    <div class="dashboard-sidebar">
-        <div class="sidebar-header">
-            <i class="fas fa-user-shield fa-3x"></i>
-            <h3>{{ session.get('firstname') }}</h3>
-            <span class="badge badge-admin">Admin</span>
-        </div>
-        
-        <nav class="sidebar-nav">
-            <a href="{{ url_for('admin.admin_dashboard') }}" class="nav-item active">
-                <i class="fas fa-home"></i> Dashboard
-            </a>
-            <a href="{{ url_for('admin.admin_users') }}" class="nav-item">
-                <i class="fas fa-users"></i> Manage Users
-            </a>
-            <a href="{{ url_for('admin.admin_add_user') }}" class="nav-item">
-                <i class="fas fa-user-plus"></i> Add User
-            </a>
-            <a href="{{ url_for('admin.admin_content') }}" class="nav-item">
-                <i class="fas fa-edit"></i> Edit Homepage
-            </a>
-            <a href="{{ url_for('user.profile') }}" class="nav-item">
-                <i class="fas fa-user-edit"></i> My Profile
-            </a>
-            <a href="{{ url_for('auth.logout') }}" class="nav-item" data-confirm="Are you sure you want to logout?" data-title="Logout">
-                <i class="fas fa-sign-out-alt"></i> Logout
-            </a>
-        </nav>
+<div class="admin-content">
+    <div class="admin-page-header">
+        <h1>Dashboard</h1>
+        <p>Welcome back, {{ user.firstname }}!</p>
     </div>
     
-    <div class="dashboard-main">
-        <div class="dashboard-header">
-            <h1><i class="fas fa-tachometer-alt"></i> Admin Dashboard</h1>
-            <p>Welcome Administrator {{ user.firstname }}!</p>
+    <div class="admin-cards">
+        <div class="admin-card">
+            <div class="admin-card-icon">
+                <i class="fas fa-users"></i>
+            </div>
+            <div class="admin-card-info">
+                <span class="card-label">Total Users</span>
+                <span class="card-value">{{ users|length }}</span>
+            </div>
+            <a href="{{ url_for('admin.admin_users') }}" class="card-link">View All <i class="fas fa-arrow-right"></i></a>
         </div>
         
-        <div class="dashboard-cards">
-            <div class="card">
-                <div class="card-icon admin-icon">
-                    <i class="fas fa-users"></i>
-                </div>
-                <div class="card-content">
-                    <h3>Total Users</h3>
-                    <p class="big-number">{{ users|length }}</p>
-                    <a href="{{ url_for('admin.admin_users') }}" class="btn btn-sm">View All</a>
-                </div>
+        <div class="admin-card">
+            <div class="admin-card-icon">
+                <i class="fas fa-user-plus"></i>
             </div>
-            
-            <div class="card">
-                <div class="card-icon admin-icon">
-                    <i class="fas fa-user-plus"></i>
-                </div>
-                <div class="card-content">
-                    <h3>Add User</h3>
-                    <p>Create a new user account.</p>
-                    <a href="{{ url_for('admin.admin_add_user') }}" class="btn btn-sm">Add Now</a>
-                </div>
+            <div class="admin-card-info">
+                <span class="card-label">Add User</span>
+                <span class="card-value">Create New</span>
             </div>
-            
-            <div class="card">
-                <div class="card-icon admin-icon">
-                    <i class="fas fa-gamepad"></i>
-                </div>
-                <div class="card-content">
-                    <h3>Games Config</h3>
-                    <p>Manage game settings.</p>
-                    <a href="#" class="btn btn-sm">Coming Soon</a>
-                </div>
-            </div>
+            <a href="{{ url_for('admin.admin_add_user') }}" class="card-link">Add Now <i class="fas fa-arrow-right"></i></a>
         </div>
         
-        <div class="users-table-section">
-            <h2><i class="fas fa-users"></i> Recent Users</h2>
-            <table class="data-table">
+        <div class="admin-card">
+            <div class="admin-card-icon">
+                <i class="fas fa-edit"></i>
+            </div>
+            <div class="admin-card-info">
+                <span class="card-label">Homepage</span>
+                <span class="card-value">Edit Content</span>
+            </div>
+            <a href="{{ url_for('admin.admin_content') }}" class="card-link">Edit <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </div>
+    
+    <div class="admin-table-section">
+        <div class="table-header">
+            <h2>Recent Users</h2>
+            <a href="{{ url_for('admin.admin_users') }}" class="btn btn-sm">View All</a>
+        </div>
+        <div class="table-wrapper">
+            <table class="admin-table">
                 <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>Username</th>
-                        <th>Full Name</th>
+                        <th>User</th>
                         <th>Email</th>
                         <th>Role</th>
                         <th>Status</th>
-                        <th>Actions</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for u in users[:5] %}
                     <tr>
-                        <td>{{ u.id }}</td>
-                        <td>{{ u.username }}</td>
-                        <td>{{ u.firstname }} {{ u.lastname }}</td>
+                        <td>
+                            <div class="user-cell">
+                                <span class="user-avatar">{{ u.firstname[0] }}</span>
+                                <div class="user-info">
+                                    <span class="user-name">{{ u.firstname }} {{ u.lastname }}</span>
+                                    <span class="user-username">@{{ u.username }}</span>
+                                </div>
+                            </div>
+                        </td>
                         <td>{{ u.email }}</td>
                         <td>
                             <span class="badge {% if u.role == 'admin' %}badge-admin{% else %}badge-user{% endif %}">
@@ -101,12 +79,11 @@
                             </span>
                         </td>
                         <td>
-                            <span class="badge {% if u.is_active %}badge-active{% else %}badge-inactive{% endif %}">
-                                {% if u.is_active %}Active{% else %}Inactive{% endif %}
-                            </span>
+                            <span class="status-dot {% if u.is_active %}active{% else %}inactive{% endif %}"></span>
+                            {% if u.is_active %}Active{% else %}Inactive{% endif %}
                         </td>
                         <td>
-                            <a href="{{ url_for('admin.admin_edit_user', user_id=u.id) }}" class="btn btn-xs btn-edit">
+                            <a href="{{ url_for('admin.admin_edit_user', user_id=u.id) }}" class="btn-icon">
                                 <i class="fas fa-edit"></i>
                             </a>
                         </td>
@@ -114,7 +91,6 @@
                     {% endfor %}
                 </tbody>
             </table>
-            <a href="{{ url_for('admin.admin_users') }}" class="btn btn-primary">View All Users</a>
         </div>
     </div>
 </div>

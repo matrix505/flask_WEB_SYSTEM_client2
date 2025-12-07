@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Admin Panel{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="admin-body">
+    <nav class="admin-navbar">
+        <div class="admin-nav-left">
+            <button class="admin-menu-toggle" onclick="toggleAdminSidebar()">
+                <i class="fas fa-bars"></i>
+            </button>
+            <a href="{{ url_for('admin.admin_dashboard') }}" class="admin-logo">
+                <span class="logo-icon"><i class="fas fa-shield-alt"></i></span>
+                <span class="logo-text">Admin</span>
+            </a>
+        </div>
+        
+        <div class="admin-nav-center">
+            <a href="{{ url_for('admin.admin_dashboard') }}" class="admin-nav-link {% if request.endpoint == 'admin.admin_dashboard' %}active{% endif %}">
+                <i class="fas fa-home"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="{{ url_for('admin.admin_users') }}" class="admin-nav-link {% if request.endpoint == 'admin.admin_users' %}active{% endif %}">
+                <i class="fas fa-users"></i>
+                <span>Users</span>
+            </a>
+            <a href="{{ url_for('admin.admin_content') }}" class="admin-nav-link {% if request.endpoint == 'admin.admin_content' %}active{% endif %}">
+                <i class="fas fa-edit"></i>
+                <span>Content</span>
+            </a>
+            <a href="{{ url_for('user.games') }}" class="admin-nav-link">
+                <i class="fas fa-gamepad"></i>
+                <span>Games</span>
+            </a>
+        </div>
+        
+        <div class="admin-nav-right">
+            <a href="{{ url_for('auth.index') }}" class="admin-nav-icon" title="View Site">
+                <i class="fas fa-external-link-alt"></i>
+            </a>
+            <div class="admin-profile-dropdown">
+                <button class="admin-profile-btn" onclick="toggleAdminDropdown()">
+                    <span class="admin-avatar">{{ session.get('firstname', 'A')[0] }}</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="admin-dropdown-menu" id="adminDropdown">
+                    <div class="dropdown-header">
+                        <span class="dropdown-name">{{ session.get('firstname') }} {{ session.get('lastname') }}</span>
+                        <span class="dropdown-role">Administrator</span>
+                    </div>
+                    <a href="{{ url_for('user.profile') }}" class="dropdown-item">
+                        <i class="fas fa-user"></i> My Profile
+                    </a>
+                    <a href="{{ url_for('auth.logout') }}" class="dropdown-item" data-confirm="Are you sure you want to logout?" data-title="Logout">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Sidebar -->
+    <div class="admin-sidebar-overlay" id="sidebarOverlay" onclick="toggleAdminSidebar()"></div>
+    <aside class="admin-mobile-sidebar" id="adminSidebar">
+        <div class="mobile-sidebar-header">
+            <span class="admin-avatar-lg">{{ session.get('firstname', 'A')[0] }}</span>
+            <h4>{{ session.get('firstname') }}</h4>
+            <span class="badge badge-admin">Admin</span>
+        </div>
+        <nav class="mobile-sidebar-nav">
+            <a href="{{ url_for('admin.admin_dashboard') }}" class="mobile-nav-item {% if request.endpoint == 'admin.admin_dashboard' %}active{% endif %}">
+                <i class="fas fa-home"></i> Dashboard
+            </a>
+            <a href="{{ url_for('admin.admin_users') }}" class="mobile-nav-item {% if request.endpoint == 'admin.admin_users' %}active{% endif %}">
+                <i class="fas fa-users"></i> Users
+            </a>
+            <a href="{{ url_for('admin.admin_add_user') }}" class="mobile-nav-item {% if request.endpoint == 'admin.admin_add_user' %}active{% endif %}">
+                <i class="fas fa-user-plus"></i> Add User
+            </a>
+            <a href="{{ url_for('admin.admin_content') }}" class="mobile-nav-item {% if request.endpoint == 'admin.admin_content' %}active{% endif %}">
+                <i class="fas fa-edit"></i> Content
+            </a>
+            <a href="{{ url_for('user.games') }}" class="mobile-nav-item">
+                <i class="fas fa-gamepad"></i> Games
+            </a>
+            <a href="{{ url_for('user.profile') }}" class="mobile-nav-item">
+                <i class="fas fa-user"></i> Profile
+            </a>
+            <div class="mobile-nav-divider"></div>
+            <a href="{{ url_for('auth.index') }}" class="mobile-nav-item">
+                <i class="fas fa-external-link-alt"></i> View Site
+            </a>
+            <a href="{{ url_for('auth.logout') }}" class="mobile-nav-item" data-confirm="Are you sure you want to logout?" data-title="Logout">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </a>
+        </nav>
+    </aside>
+
+    <div class="flash-messages">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="flash-message {{ category }}">
+                        {{ message }}
+                        <span class="close-btn" onclick="this.parentElement.remove()">&times;</span>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+
+    <main class="admin-main">
+        {% block content %}{% endblock %}
+    </main>
+
+    <div id="confirmModal" class="modal-overlay" style="display:none;">
+        <div class="modal-box">
+            <div class="modal-header">
+                <i class="fas fa-question-circle"></i>
+                <h3 id="modalTitle">Confirm Action</h3>
+            </div>
+            <p id="modalMessage">Are you sure you want to proceed?</p>
+            <div class="modal-buttons">
+                <button id="modalCancel" class="btn btn-secondary btn-sm">
+                    <i class="fas fa-times"></i> Cancel
+                </button>
+                <button id="modalConfirm" class="btn btn-primary btn-sm">
+                    <i class="fas fa-check"></i> Confirm
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleAdminSidebar() {
+            var sidebar = document.getElementById('adminSidebar');
+            var overlay = document.getElementById('sidebarOverlay');
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+        
+        function toggleAdminDropdown() {
+            var dropdown = document.getElementById('adminDropdown');
+            dropdown.classList.toggle('show');
+        }
+        
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            var dropdown = document.getElementById('adminDropdown');
+            var profileBtn = document.querySelector('.admin-profile-btn');
+            if (!profileBtn.contains(e.target) && !dropdown.contains(e.target)) {
+                dropdown.classList.remove('show');
+            }
+        });
+        
+        // Confirmation modal
+        function showConfirm(title, message, onConfirm, confirmBtnClass) {
+            var modal = document.getElementById('confirmModal');
+            document.getElementById('modalTitle').textContent = title;
+            document.getElementById('modalMessage').textContent = message;
+            
+            var confirmBtn = document.getElementById('modalConfirm');
+            confirmBtn.className = 'btn btn-sm ' + (confirmBtnClass || 'btn-primary');
+            
+            modal.style.display = 'flex';
+            
+            document.getElementById('modalConfirm').onclick = function() {
+                modal.style.display = 'none';
+                onConfirm();
+            };
+            document.getElementById('modalCancel').onclick = function() {
+                modal.style.display = 'none';
+            };
+        }
+        
+        document.addEventListener('click', function(e) {
+            var target = e.target.closest('a[data-confirm]');
+            if (target && target.tagName === 'A') {
+                e.preventDefault();
+                var message = target.getAttribute('data-confirm');
+                var title = target.getAttribute('data-title') || 'Confirm Action';
+                var btnClass = target.getAttribute('data-btn-class') || 'btn-primary';
+                var href = target.getAttribute('href');
+                
+                if (href) {
+                    showConfirm(title, message, function() {
+                        window.location.href = href;
+                    }, btnClass);
+                }
+            }
+        });
+
+        // Auto-hide flash messages
+        setTimeout(function() {
+            var flashMessages = document.querySelectorAll('.flash-message');
+            flashMessages.forEach(function(msg) {
+                msg.style.opacity = '0';
+                setTimeout(function() { msg.remove(); }, 500);
+            });
+        }, 5000);
+    </script>
+</body>
+</html>
