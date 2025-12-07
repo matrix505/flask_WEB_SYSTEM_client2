@@ -1,83 +1,57 @@
-{% extends 'base.html' %}
+{% extends 'user_base.html' %}
 
 {% block title %}Dashboard - MyBlog{% endblock %}
 
 {% block content %}
-<div class="dashboard-container">
-    <div class="dashboard-sidebar">
-        <div class="sidebar-header">
-            <i class="fas fa-user-circle fa-3x"></i>
-            <h3>{{ session.get('firstname') }}</h3>
-            <span class="badge badge-user">User</span>
-        </div>
-        
-        <nav class="sidebar-nav">
-            <a href="{{ url_for('user.user_dashboard') }}" class="nav-item active">
-                <i class="fas fa-home"></i> Dashboard
-            </a>
-            <a href="{{ url_for('user.profile') }}" class="nav-item">
-                <i class="fas fa-user-edit"></i> My Profile
-            </a>
-            <a href="{{ url_for('auth.logout') }}" class="nav-item" data-confirm="Are you sure you want to logout?" data-title="Logout">
-                <i class="fas fa-sign-out-alt"></i> Logout
-            </a>
-        </nav>
+<div class="user-content">
+    <div class="user-page-header">
+        <h1>Hello, {{ user.firstname }}!</h1>
+        <p>Account overview</p>
     </div>
     
-    <div class="dashboard-main">
-        <div class="dashboard-header">
-            <h1><i class="fas fa-tachometer-alt"></i> User Dashboard</h1>
-            <p>Welcome to your personal dashboard, {{ user.firstname }}!</p>
+    <div style="display: flex; justify-content: center; margin-bottom: 32px;">
+        <a href="{{ url_for('user.games') }}" class="minimal-game-btn">
+            <span class="game-icon"><i class="fas fa-gamepad"></i></span>
+            <span class="game-text">Play Games</span>
+        </a>
+    </div>
+    
+    <div class="user-info-card">
+        <div class="info-card-header">
+            <h2><i class="fas fa-id-card"></i> Account Information</h2>
         </div>
-        
-        <div class="dashboard-cards">
-            <div class="card">
-                <div class="card-icon">
-                    <i class="fas fa-user"></i>
+        <div class="info-card-body">
+            <div class="info-grid">
+                <div class="info-item">
+                    <span class="info-label"><i class="fas fa-at"></i> Username</span>
+                    <span class="info-value">{{ user.username }}</span>
                 </div>
-                <div class="card-content">
-                    <h3>Profile</h3>
-                    <p>View and update your profile information.</p>
-                    <a href="{{ url_for('user.profile') }}" class="btn btn-sm">View Profile</a>
+                <div class="info-item">
+                    <span class="info-label"><i class="fas fa-user"></i> Full Name</span>
+                    <span class="info-value">{{ user.firstname }} {{ user.middlename or '' }} {{ user.lastname }}</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label"><i class="fas fa-envelope"></i> Email</span>
+                    <span class="info-value">{{ user.email }}</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label"><i class="fas fa-phone"></i> Contact</span>
+                    <span class="info-value">{{ user.contact }}</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label"><i class="fas fa-calendar"></i> Birthday</span>
+                    <span class="info-value">{{ user.birthday }}</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label"><i class="fas fa-check-circle"></i> Status</span>
+                    <span class="info-value"><span class="status-badge active">Active</span></span>
                 </div>
             </div>
-            
-            <div class="card">
-                <div class="card-icon">
-                    <i class="fas fa-gamepad"></i>
-                </div>
-                <div class="card-content">
-                    <h3>Games</h3>
-                    <p>Play fun games and have a good time!</p>
-                    <a href="{{ url_for('user.games') }}" class="btn btn-sm">Play Games</a>
-                </div>
+            <div class="info-card-footer">
+                <a href="{{ url_for('user.profile') }}" class="btn btn-primary btn-sm">
+                    <i class="fas fa-edit"></i> Edit Profile
+                </a>
             </div>
-        </div>
-        
-        <div class="user-info-section">
-            <h2><i class="fas fa-info-circle"></i> Your Information</h2>
-            <table class="info-table">
-                <tr>
-                    <td><strong>Username:</strong></td>
-                    <td>{{ user.username }}</td>
-                </tr>
-                <tr>
-                    <td><strong>Full Name:</strong></td>
-                    <td>{{ user.firstname }} {{ user.middlename }} {{ user.lastname }}</td>
-                </tr>
-                <tr>
-                    <td><strong>Email:</strong></td>
-                    <td>{{ user.email }}</td>
-                </tr>
-                <tr>
-                    <td><strong>Contact:</strong></td>
-                    <td>{{ user.contact }}</td>
-                </tr>
-                <tr>
-                    <td><strong>Birthday:</strong></td>
-                    <td>{{ user.birthday }}</td>
-                </tr>
-            </table>
         </div>
     </div>
 </div>
