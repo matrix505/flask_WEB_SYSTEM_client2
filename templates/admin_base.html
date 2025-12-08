@@ -26,18 +26,6 @@
                 <i class="fas fa-home"></i>
                 <span>Dashboard</span>
             </a>
-            <a href="{{ url_for('admin.admin_users') }}" class="admin-nav-link {% if request.endpoint == 'admin.admin_users' %}active{% endif %}">
-                <i class="fas fa-users"></i>
-                <span>Users</span>
-            </a>
-            <a href="{{ url_for('admin.admin_content') }}" class="admin-nav-link {% if request.endpoint == 'admin.admin_content' %}active{% endif %}">
-                <i class="fas fa-edit"></i>
-                <span>Content</span>
-            </a>
-            <a href="{{ url_for('user.games') }}" class="admin-nav-link nav-games-btn">
-                <i class="fas fa-gamepad"></i>
-                <span>Games</span>
-            </a>
         </div>
         
         <div class="admin-nav-right">
@@ -54,9 +42,6 @@
                         <span class="dropdown-name">{{ session.get('firstname') }} {{ session.get('lastname') }}</span>
                         <span class="dropdown-role">Administrator</span>
                     </div>
-                    <a href="{{ url_for('user.profile') }}" class="dropdown-item">
-                        <i class="fas fa-user"></i> My Profile
-                    </a>
                     <a href="{{ url_for('auth.logout') }}" class="dropdown-item" data-confirm="Are you sure you want to logout?" data-title="Logout">
                         <i class="fas fa-sign-out-alt"></i> Logout
                     </a>
@@ -76,22 +61,6 @@
         <nav class="mobile-sidebar-nav">
             <a href="{{ url_for('admin.admin_dashboard') }}" class="mobile-nav-item {% if request.endpoint == 'admin.admin_dashboard' %}active{% endif %}">
                 <i class="fas fa-home"></i> Dashboard
-            </a>
-            <a href="{{ url_for('admin.admin_users') }}" class="mobile-nav-item {% if request.endpoint == 'admin.admin_users' %}active{% endif %}">
-                <i class="fas fa-users"></i> Users
-            </a>
-            <a href="{{ url_for('admin.admin_add_user') }}" class="mobile-nav-item {% if request.endpoint == 'admin.admin_add_user' %}active{% endif %}">
-                <i class="fas fa-user-plus"></i> Add User
-            </a>
-            <a href="{{ url_for('admin.admin_content') }}" class="mobile-nav-item {% if request.endpoint == 'admin.admin_content' %}active{% endif %}">
-                <i class="fas fa-edit"></i> Content
-            </a>
-            <a href="{{ url_for('user.games') }}" class="mobile-nav-item nav-games-btn">
-                <i class="fas fa-gamepad"></i>
-                <span>Games</span>
-            </a>
-            <a href="{{ url_for('user.profile') }}" class="mobile-nav-item">
-                <i class="fas fa-user"></i> Profile
             </a>
             <div class="mobile-nav-divider"></div>
             <a href="{{ url_for('auth.index') }}" class="mobile-nav-item">

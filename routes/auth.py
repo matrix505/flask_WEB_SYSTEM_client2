@@ -23,7 +23,7 @@ def login():
     if session.get('loggedIn'):
         if session.get('role') == 'admin':
             return redirect(url_for('admin.admin_dashboard'))
-        return redirect(url_for('user.user_dashboard'))
+        return redirect(url_for('auth.index'))
     
     if request.method == 'POST':
         username = request.form.get('username')
@@ -51,7 +51,7 @@ def login():
             if user['role'] == 'admin':
                 return redirect(url_for('admin.admin_dashboard'))
             else:
-                return redirect(url_for('user.user_dashboard'))
+                return redirect(url_for('auth.index'))
         else:
             flash('Invalid username or password, or account is deactivated!', 'error')
     
