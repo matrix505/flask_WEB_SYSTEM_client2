@@ -1,9 +1,12 @@
 # app.py - Main Flask Application
-from flask import Flask, render_template
-from config import SECRET_KEY
+from flask import Flask, render_template 
 from routes import register_blueprints
+from dotenv import load_dotenv
+load_dotenv()
 
 app = Flask(__name__)
+
+from config import SECRET_KEY
 app.secret_key = SECRET_KEY
 
 # Register all blueprints

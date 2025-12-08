@@ -3,9 +3,9 @@ import os
 SECRET_KEY = 'secret'
 
 DB_CONFIG = {
-    'host': 'localhost',
-    'user': 'root',
-    'password': '',  # 
+    'host': os.getenv('db_host'),
+    'user': os.getenv('db_user'),
+    'password': os.getenv('db_password'),  # 
     'database': 'flask_blog_db'
 }
 
@@ -13,8 +13,8 @@ DB_CONFIG = {
 EMAIL_CONFIG = {
     'smtp_server': 'smtp.gmail.com',
     'smtp_port': 587,
-    'email': '',
-    'password': ''
+    'email': os.getenv('mail_email'),
+    'password': os.getenv('mail_password')
 }
 
 OTP_EXPIRY_MINUTES = 5
