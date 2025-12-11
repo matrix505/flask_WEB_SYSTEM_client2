@@ -7,13 +7,13 @@
     <div class="auth-card">
         <div class="auth-card-header">
             <h1>Verify OTP</h1>
-            <p>We sent a 6-digit code to <strong>{{ email }}</strong></p>
+            <p>6-digit code sent to <strong>{{ email }}</strong></p>
         </div>
         
         <form method="POST" action="{{ url_for('auth.verify_otp') }}" class="auth-form">
             <div class="form-field">
-                <label for="otp">Enter OTP Code</label>
-                <input type="text" id="otp" name="otp" placeholder="123456" maxlength="6" required 
+                <label for="otp">Enter OTP</label>
+                <input type="text" id="otp" name="otp" placeholder="000000" maxlength="6" required 
                        style="text-align: center; font-size: 24px; letter-spacing: 8px;">
             </div>
             
@@ -23,8 +23,7 @@
         </form>
         
         <div class="auth-footer-otp">
-            <p>Didn't receive the code? <a href="{{ url_for('auth.resend_otp') }}">Resend OTP</a></p>
-            <p class="otp-expire">OTP expires in 5 minutes</p>
+            <p>did not receive the code? <a href="{{ url_for('auth.resend_otp') }}">Resent OTP</a></p>
         </div>
     </div>
 </div>

@@ -551,19 +551,18 @@ a {
     align-items: center;
     min-height: 100vh;
     padding: 40px 20px;
-    background: linear-gradient(135deg, #0d0d0d 0%, #1a2f1a 50%, #0d0d0d 100%);
+    background-color: #e3ebf1;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 .auth-card {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    padding: 48px 40px;
-    border-radius: 16px;
+    background: #ffffff;
+    padding: 40px 40px;
+    border-radius: 2px;
     width: 100%;
     max-width: 400px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+    border: 1px solid #e9ecef;
 }
 
 .auth-card-wide {
@@ -578,13 +577,13 @@ a {
 .auth-card-header h1 {
     font-size: 1.5rem;
     font-weight: 600;
-    color: #fff;
+    color: #1a1a1a;
     margin-bottom: 6px;
     letter-spacing: -0.3px;
 }
 
 .auth-card-header p {
-    color: rgba(255, 255, 255, 0.5);
+    color: #6c757d;
     font-size: 13px;
     font-weight: 400;
 }
@@ -598,7 +597,7 @@ a {
     display: block;
     font-size: 12px;
     font-weight: 600;
-    color: #ffffff;
+    color: #000000;
     margin-bottom: 6px;
     letter-spacing: 0.3px;
 }
@@ -608,21 +607,22 @@ a {
     padding: 12px 14px;
     font-size: 13px;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    border: 1px solid #dee2e6;
     border-radius: 6px;
-    background: rgba(255, 255, 255, 0.06);
+    background: #ffffff;
     transition: all 0.2s ease;
-    color: #fff;
+    color: #1a1a1a;
 }
 
 .form-field input::placeholder {
-    color: rgba(255, 255, 255, 0.5);
+    color: #adb5bd;
 }
 
 .form-field input:focus {
     outline: none;
-    border-color: #9DC183;
-    background: rgba(255, 255, 255, 0.1);
+    border-color: #007bff;
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
 }
 
 .form-feedback {
@@ -651,7 +651,7 @@ a {
 .section-title {
     font-size: 11px;
     font-weight: 500;
-    color: rgba(157, 193, 131, 0.8);
+    color: #6c757d;
     text-transform: uppercase;
     letter-spacing: 1.2px;
     margin-bottom: 12px;
@@ -679,8 +679,8 @@ a {
     font-size: 13px;
     font-weight: 600;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    color: #0d0d0d;
-    background: #9DC183;
+    color: #ffffff;
+    background: #007bff;
     border: none;
     border-radius: 8px;
     cursor: pointer;
@@ -689,7 +689,7 @@ a {
 }
 
 .auth-btn:hover {
-    background: #b5d19d;
+    background: #0056b3;
     transform: translateY(-1px);
 }
 
@@ -724,19 +724,19 @@ a {
 }
 
 .auth-link p {
-    color: rgba(255, 255, 255, 0.5);
+    color: #6c757d;
     font-size: 14px;
 }
 
 .auth-link a {
-    color: #9DC183;
+    color: #007bff;
     font-weight: 600;
     text-decoration: none;
     transition: color 0.2s;
 }
 
 .auth-link a:hover {
-    color: #b5d19d;
+    color: #0056b3;
     text-decoration: none;
 }
 
@@ -747,24 +747,24 @@ a {
 }
 
 .auth-footer-otp p {
-    color: rgba(255, 255, 255, 0.6);
+    color: #6c757d;
     font-size: 13px;
     margin-bottom: 8px;
 }
 
 .auth-footer-otp a {
-    color: #9DC183;
+    color: #007bff;
     font-weight: 600;
     text-decoration: none;
     transition: color 0.2s;
 }
 
 .auth-footer-otp a:hover {
-    color: #b5d19d;
+    color: #0056b3;
 }
 
 .auth-footer-otp .otp-expire {
-    color: rgba(255, 255, 255, 0.4);
+    color: #adb5bd;
     font-size: 12px;
 }
 
@@ -773,7 +773,7 @@ a {
     .auth-card {
         padding: 32px 24px;
         margin: 10px;
-        background: rgba(255, 255, 255, 0.03);
+        background: #ffffff;
     }
     
     .auth-card-wide {
@@ -829,23 +829,9 @@ a {
 .auth-form label {
     display: block;
     margin-bottom: 5px;
-    color: #ffffff;
-    font-weight: 600;
+    color: #1d1d1d;
+    font-weight: 500;
     font-size: 13px;
-}
-
-.auth-form input, .auth-form select {
-    width: 100%;
-    padding: 10px 12px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 14px;
-    transition: border-color 0.2s;
-}
-
-.auth-form input:focus, .auth-form select:focus {
-    outline: none;
-    border-color: #006400;
 }
 
 .form-row {

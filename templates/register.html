@@ -11,63 +11,49 @@
         </div>
         
         <form method="POST" action="{{ url_for('auth.register') }}" class="auth-form" id="registerForm">
-            <div class="form-section">
-                <div class="section-title">Personal</div>
-                <div class="form-grid form-grid-2">
-                    <div class="form-field">
-                        <label for="firstname">First Name</label>
-                        <input type="text" id="firstname" name="firstname" placeholder="Enter First Name" required>
-                    </div>
-                    
-                    <div class="form-field">
-                        <label for="lastname">Last Name</label>
-                        <input type="text" id="lastname" name="lastname" placeholder="Enter Last Name" required>
-                    </div>
-                </div>
-                
-                <div class="form-field">
-                    <label for="middlename">Middle Name (Optional)</label>
-                    <input type="text" id="middlename" name="middlename" placeholder="Enter Middle Name">
-                </div>
-                
-                <div class="form-grid form-grid-2">
-                    <div class="form-field">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" placeholder="Enter Email" required>
-                    </div>
-                    
-                    <div class="form-field">
-                        <label for="contact">Phone</label>
-                        <input type="text" id="contact" name="contact" placeholder="Enter Phone Number" required>
-                    </div>
-                </div>
-                
-                <div class="form-grid form-grid-2">
-                    <div class="form-field">
-                        <label for="birthday">Birthday</label>
-                        <input type="date" id="birthday" name="birthday" required>
-                    </div>
-                    
-                    <div class="form-field">
-                        <label for="username">Username</label>
-                        <input type="text" id="username" name="username" placeholder="Enter Username" required>
-                    </div>
-                </div>
+            <div class="form-field">
+                <label for="firstname">First Name</label>
+                <input type="text" id="firstname" name="firstname" placeholder="Enter First Name" required>
             </div>
             
-            <div class="form-section">
-                <div class="section-title">Security</div>
-                <div class="form-grid form-grid-2">
-                    <div class="form-field">
-                        <label for="password">Password</label>
-                        <input type="password" id="password" name="password" placeholder="Min. 6 characters" required minlength="6">
-                    </div>
-                    
-                    <div class="form-field">
-                        <label for="confirm_password">Confirm</label>
-                        <input type="password" id="confirm_password" name="confirm_password" placeholder="Re-enter" required>
-                    </div>
-                </div>
+            <div class="form-field">
+                <label for="lastname">Last Name</label>
+                <input type="text" id="lastname" name="lastname" placeholder="Enter Last Name" required>
+            </div>
+            
+            <div class="form-field">
+                <label for="middlename">Middle Name (Optional)</label>
+                <input type="text" id="middlename" name="middlename" placeholder="Enter Middle Name">
+            </div>
+            
+            <div class="form-field">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter Email" required>
+            </div>
+            
+            <div class="form-field">
+                <label for="contact">Phone</label>
+                <input type="text" id="contact" name="contact" placeholder="Enter Phone Number" required>
+            </div>
+            
+            <div class="form-field">
+                <label for="birthday">Birthday</label>
+                <input type="date" id="birthday" name="birthday" required>
+            </div>
+            
+            <div class="form-field">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="Enter Username" required>
+            </div>
+            
+            <div class="form-field">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Min. 6 characters" required minlength="6">
+            </div>
+            
+            <div class="form-field">
+                <label for="confirm_password">Confirm Password</label>
+                <input type="password" id="confirm_password" name="confirm_password" placeholder="Re-enter" required>
             </div>
             
             <button type="submit" class="auth-btn">
