@@ -30,10 +30,7 @@
                     <a href="{{ url_for('user.user_dashboard') }}"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
                     
                     {% endif %}
-                        <a href="{{ url_for('user.games') }}" class="nav-games-btn {% if request.endpoint == 'user.games' %}active{% endif %}">
-                            <i class="fas fa-gamepad"></i>
-                            <span>Games</span>
-                        </a>
+                       
             {% else %}
                 <a href="{{ url_for('auth.login') }}"><i class="fas fa-sign-in-alt"></i> Login</a>
                 <a href="{{ url_for('auth.register') }}"><i class="fas fa-user-plus"></i> Register</a>

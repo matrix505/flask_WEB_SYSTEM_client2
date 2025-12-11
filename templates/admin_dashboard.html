@@ -6,42 +6,7 @@
 <div class="admin-content">
     <div class="admin-page-header">
         <h1>Dashboard</h1>
-        <p>Welcome back, {{ user.firstname }}!</p>
-    </div>
-    
-    <div class="admin-cards">
-        <div class="admin-card">
-            <div class="admin-card-icon">
-                <i class="fas fa-users"></i>
-            </div>
-            <div class="admin-card-info">
-                <span class="card-label">Total Users</span>
-                <span class="card-value">{{ users|length }}</span>
-            </div>
-            <a href="{{ url_for('admin.admin_users') }}" class="card-link">View All <i class="fas fa-arrow-right"></i></a>
-        </div>
-        
-        <div class="admin-card">
-            <div class="admin-card-icon">
-                <i class="fas fa-user-plus"></i>
-            </div>
-            <div class="admin-card-info">
-                <span class="card-label">Add User</span>
-                <span class="card-value">Create New</span>
-            </div>
-            <a href="{{ url_for('admin.admin_add_user') }}" class="card-link">Add Now <i class="fas fa-arrow-right"></i></a>
-        </div>
-        
-        <div class="admin-card">
-            <div class="admin-card-icon">
-                <i class="fas fa-edit"></i>
-            </div>
-            <div class="admin-card-info">
-                <span class="card-label">Homepage</span>
-                <span class="card-value">Edit Content</span>
-            </div>
-            <a href="{{ url_for('admin.admin_content') }}" class="card-link">Edit <i class="fas fa-arrow-right"></i></a>
-        </div>
+      
     </div>
     
     <div class="admin-table-section">

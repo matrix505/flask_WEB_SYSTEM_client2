@@ -6,12 +6,11 @@
 <div class="admin-content">
     <div class="admin-section">
         <div class="admin-section-header">
-            <h2><i class="fas fa-edit"></i> Edit Homepage Content</h2>
-            <p>Update the content displayed on the homepage.</p>
+            <h2>Edit Homepage Content</h2>
         </div>
         
         <div class="admin-form-container" style="margin-bottom: 25px;">
-            <h3 style="margin-bottom: 15px; color: #1a1a1a; font-size: 1.1rem;"><i class="fas fa-image"></i> Profile Image</h3>
+            <h3 style="margin-bottom: 15px; color: #1a1a1a; font-size: 1.1rem;"> Profile Image</h3>
             <form method="POST" action="{{ url_for('admin.admin_upload_profile') }}" enctype="multipart/form-data" class="admin-form" data-confirm="Upload new profile image?" data-title="Update Image">
                 <div class="form-group">
                     <label for="profile_image"><i class="fas fa-camera"></i> Select Image (PNG, JPG, JPEG)</label>
@@ -27,7 +26,7 @@
         </div>
         
         <div class="admin-form-container">
-            <h3 style="margin-bottom: 15px; color: #1a1a1a; font-size: 1.1rem;"><i class="fas fa-file-alt"></i> Homepage Text Content</h3>
+            <h3 style="margin-bottom: 15px; color: #1a1a1a; font-size: 1.1rem;">Homepage Text Content</h3>
             <form method="POST" action="{{ url_for('admin.admin_content') }}" class="admin-form" data-confirm="Save changes to homepage?" data-title="Update Content">
                 <div class="form-group">
                     <label for="site_title"><i class="fas fa-heading"></i> Site Title</label>
