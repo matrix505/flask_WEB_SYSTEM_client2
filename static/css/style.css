@@ -5,7 +5,7 @@
 }
 
 body {
-    font-family: 'Segoe UI', Arial, sans-serif;
+    font-family: Arial, sans-serif;
     background-color: #f5f7f5;
     min-height: 100vh;
     color: #1a1a1a;
@@ -34,8 +34,6 @@ a {
 .modal-box {
     background-color: #fff;
     padding: 25px;
-    border-radius: 8px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     max-width: 360px;
     width: 90%;
     text-align: center;
@@ -70,10 +68,11 @@ a {
 
 /* Navbar */
 .navbar {
-    background-color: transparent;
+    background-color: #ffffff;
     padding: 15px 20px;
     display: flex;
     justify-content: center;
+     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
     align-items: center;
     position: fixed;
     top: 0;
@@ -90,7 +89,7 @@ a {
 .nav-brand a {
     font-size: 20px;
     font-weight: bold;
-    color: #fff;
+    color: #000000;
 }
 
 .nav-brand i {
@@ -99,47 +98,42 @@ a {
 
 .nav-toggle {
     display: none;
-    background: rgba(0, 100, 0, 0.9);
-    border: 2px solid #9DC183;
-    color: #fff;
+    background: #007bff;
+    border: none;
+    color: #ffffff;
     font-size: 20px;
     cursor: pointer;
     padding: 8px 12px;
-    border-radius: 8px;
-    transition: all 0.3s ease;
 }
 
 .nav-toggle:hover {
-    background: #006400;
-    transform: scale(1.05);
+    background: #0056b3;
 }
 
 .nav-links {
     display: flex;
-    gap: 10px;
-    background: rgba(13, 13, 13, 0.7);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    padding: 6px 14px;
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    gap: 20px;
+    background: transparent;
+    padding: 0;
+    border-radius: 0;
+    border: none;
 }
 
 .nav-links a {
-    color: #fff;
-    padding: 6px 12px;
-    border-radius: 6px;
-    transition: all 0.3s ease;
-    font-size: 12px;
+    color: #000000;
+    padding: 8px 12px;
+    font-size: 14px;
     font-weight: 500;
     background-color: transparent;
     border: none;
     box-shadow: none;
+    text-decoration: none;
 }
 
 .nav-links a:hover,
 .nav-links a:active {
-    background-color: rgba(0, 100, 0, 0.8);
+    background-color: #f8f9fa;
+    color: #007bff;
 }
 
 .nav-links a i {
@@ -150,35 +144,32 @@ a {
 
 /* Game button: minimal default style */
 .nav-games-btn {
-    background: none;
-    color: #d32f2f;
-    border-radius: 6px;
-    padding: 6px 14px;
+    background: #dc3545;
+    color: #ffffff;
+    padding: 8px 16px;
     margin-left: 12px;
     font-weight: 600;
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    font-size: 15px;
+    font-size: 14px;
     border: none;
     cursor: pointer;
-    transition: color 0.18s ease, background 0.18s ease, transform 0.12s ease;
+    text-decoration: none;
 }
-.nav-games-btn i { font-size: 18px; display: inline-block; }
-.nav-games-btn span { font-size: 15px; line-height: 1; }
-.nav-games-btn:hover { color: #b71c1c; transform: translateY(-1px); }
+.nav-games-btn i { font-size: 16px; }
+.nav-games-btn span { font-size: 14px; }
+.nav-games-btn:hover { background: #c82333; }
 
-/* Contextual appearance when placed inside the main top nav (dark glass bg) */
+/* Contextual appearance when placed inside the main top nav (light bg) */
 .nav-links .nav-games-btn {
-    background: rgba(211,47,47,0.95);
-    color: #fff;
-    padding: 6px 12px;
-    border-radius: 8px;
-    margin-left: 14px;
-    box-shadow: 0 6px 18px rgba(211,47,47,0.12);
+    background: #dc3545;
+    color: #ffffff;
+    padding: 8px 16px;
+    margin-left: 12px;
 }
 .nav-links .nav-games-btn:hover {
-    background: rgba(183,28,28,0.98);
+    background: #c82333;
 }
 
 /* Make nav-games-btn full-width/stacked in mobile navs where desired */
@@ -242,13 +233,13 @@ a {
 }
 
 .flash-message.success {
-    background: linear-gradient(90deg, #2e7d32, #388e3c);
+    background: #28a745;
 }
 .flash-message.error {
-    background: linear-gradient(90deg, #e53935, #d32f2f);
+    background: #dc3545;
 }
 .flash-message.info {
-    background: linear-gradient(90deg, #1976d2, #42a5f5);
+    background: #007bff;
 }
 
 .flash-message .close-btn {
@@ -277,13 +268,14 @@ a {
 /* Main content */
 .main-content {
     min-height: calc(100vh - 120px);
+;
 }
 
 /* ============ HOME PAGE DESIGN ============ */
 .home-split {
     display: flex;
     min-height: 100vh;
-    background: linear-gradient(135deg, #0d0d0d 0%, #1a2f1a 50%, #0d0d0d 100%);
+    background: #59435e;
 }
 
 .home-left {
@@ -304,7 +296,6 @@ a {
     font-size: 12px;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 3px;
     margin-bottom: 16px;
 }
 
@@ -347,7 +338,6 @@ a {
     font-size: 11px;
     color: #9DC183;
     text-transform: uppercase;
-    letter-spacing: 1px;
     margin-bottom: 6px;
 }
 
@@ -394,22 +384,12 @@ a {
     width: 350px;
     height: 350px;
     object-fit: cover;
-    border-radius: 20px;
+    border-radius: 2px;
     position: relative;
     z-index: 2;
     box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
 }
 
-.profile-decoration {
-    position: absolute;
-    top: -20px;
-    right: -20px;
-    width: 100%;
-    height: 100%;
-    border: 2px solid #9DC183;
-    border-radius: 20px;
-    z-index: 1;
-}
 
 /* Responsive Home */
 @media (max-width: 900px) {
@@ -550,18 +530,16 @@ a {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    padding: 40px 20px;
+    padding: 40px 40px;
     background-color: #e3ebf1;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: Arial, sans-serif;
 }
 
 .auth-card {
     background: #ffffff;
     padding: 40px 40px;
-    border-radius: 2px;
     width: 100%;
     max-width: 400px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
     border: 1px solid #e9ecef;
 }
 
@@ -579,7 +557,6 @@ a {
     font-weight: 600;
     color: #1a1a1a;
     margin-bottom: 6px;
-    letter-spacing: -0.3px;
 }
 
 .auth-card-header p {
@@ -599,18 +576,15 @@ a {
     font-weight: 600;
     color: #000000;
     margin-bottom: 6px;
-    letter-spacing: 0.3px;
 }
 
 .form-field input {
     width: 100%;
     padding: 12px 14px;
     font-size: 13px;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: Arial, sans-serif;
     border: 1px solid #dee2e6;
-    border-radius: 6px;
     background: #ffffff;
-    transition: all 0.2s ease;
     color: #1a1a1a;
 }
 
@@ -622,7 +596,6 @@ a {
     outline: none;
     border-color: #007bff;
     background: #ffffff;
-    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
 }
 
 .form-feedback {
@@ -653,7 +626,6 @@ a {
     font-weight: 500;
     color: #6c757d;
     text-transform: uppercase;
-    letter-spacing: 1.2px;
     margin-bottom: 12px;
 }
 
@@ -678,23 +650,16 @@ a {
     padding: 12px 24px;
     font-size: 13px;
     font-weight: 600;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: Arial, sans-serif;
     color: #ffffff;
     background: #007bff;
     border: none;
-    border-radius: 8px;
     cursor: pointer;
-    transition: all 0.2s ease;
     margin-top: 12px;
 }
 
 .auth-btn:hover {
     background: #0056b3;
-    transform: translateY(-1px);
-}
-
-.auth-btn:active {
-    transform: translateY(0);
 }
 
 /* Divider */
@@ -732,7 +697,6 @@ a {
     color: #007bff;
     font-weight: 600;
     text-decoration: none;
-    transition: color 0.2s;
 }
 
 .auth-link a:hover {
@@ -859,7 +823,7 @@ a {
 /* ============ ADMIN NAVBAR ============ */
 .admin-body {
     background-color: #f5f7f5;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: Arial, sans-serif;
 }
 
 .admin-navbar {
@@ -909,8 +873,7 @@ a {
 .admin-logo .logo-icon {
     width: 32px;
     height: 32px;
-    background: linear-gradient(135deg, #006400, #228B22);
-    border-radius: 8px;
+    background: #28a745;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1002,8 +965,7 @@ a {
 .admin-avatar {
     width: 32px;
     height: 32px;
-    background: linear-gradient(135deg, #006400, #228B22);
-    border-radius: 50%;
+    background: #28a745;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1253,7 +1215,6 @@ a {
     font-size: 9px;
     color: #999;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
     margin-bottom: 1px;
 }
 
@@ -1322,7 +1283,6 @@ a {
     font-weight: 500;
     text-transform: uppercase;
     font-size: 11px;
-    letter-spacing: 0.5px;
 }
 
 .admin-table td {
@@ -1555,14 +1515,11 @@ a {
     display: inline-flex;
     align-items: center;
     gap: 14px;
-    background: linear-gradient(90deg, #6366f1 0%, #9DC183 100%);
+    background: #007bff;
     color: #fff;
     font-size: 1.2rem;
     font-weight: 600;
     padding: 18px 38px;
-    border-radius: 32px;
-    box-shadow: 0 2px 12px rgba(99,102,241,0.10);
-    transition: box-shadow 0.2s, transform 0.2s;
     text-decoration: none;
     border: none;
     outline: none;
@@ -1585,11 +1542,10 @@ a {
 .minimal-game-btn .game-text {
     font-size: 1.2rem;
     font-weight: 600;
-    letter-spacing: 0.5px;
 }
 .user-body {
     background-color: #f8faf8;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: Arial, sans-serif;
 }
 
 /* User Navbar */
@@ -1640,8 +1596,7 @@ a {
 .user-logo .logo-icon {
     width: 32px;
     height: 32px;
-    background: linear-gradient(135deg, #9DC183, #006400);
-    border-radius: 10px;
+    background: #28a745;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1733,8 +1688,7 @@ a {
 .user-avatar {
     width: 32px;
     height: 32px;
-    background: linear-gradient(135deg, #9DC183, #006400);
-    border-radius: 50%;
+    background: #28a745;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1746,8 +1700,7 @@ a {
 .user-avatar-lg {
     width: 56px;
     height: 56px;
-    background: linear-gradient(135deg, #9DC183, #006400);
-    border-radius: 50%;
+    background: #28a745;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1900,7 +1853,6 @@ a {
     font-size: 12px;
     color: #999;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
     margin-bottom: 4px;
 }
 
@@ -1956,7 +1908,6 @@ a {
     font-size: 12px;
     color: #888;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
 }
 
 .info-label i {
@@ -2512,8 +2463,10 @@ a {
     .navbar {
         flex-wrap: wrap;
         padding: 10px 15px;
-        background-color: rgba(13, 13, 13, 0.95);
+        background-color: #ffffff;
+       
         justify-content: space-between;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
     
     .nav-brand {
@@ -2534,7 +2487,8 @@ a {
         gap: 8px;
         margin-top: 15px;
         padding-top: 15px;
-        border-top: 2px solid #006400;
+        border-top: 1px solid #dee2e6;
+        background: transparent;
     }
     
     .nav-links.nav-active {
@@ -2544,18 +2498,19 @@ a {
     .nav-links a {
         text-align: center;
         padding: 12px 16px;
-        background-color: rgba(0, 100, 0, 0.9);
-        border: 1px solid rgba(157, 193, 131, 0.3);
+        background-color: #f8f9fa;
+        color: #000000;
     }
     
     .nav-links a:hover {
-        background-color: #006400;
-        border-color: #9DC183;
+        background-color: #e9ecef;
+        color: #007bff;
     }
     
     .nav-links .nav-games-btn {
-        background: linear-gradient(135deg, #006400, #228B22);
-        border: 2px solid #9DC183;
+        background: #dc3545;
+        color: #ffffff;
+        border: none;
     }
     
     .hero-title {
