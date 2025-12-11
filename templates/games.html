@@ -1,4 +1,3 @@
-
 {% if session.get('role') == 'admin' %}
 	{% extends 'admin_base.html' %}
 {% else %}
@@ -6,48 +5,30 @@
 {% endif %}
 
 {% block content %}
-<!-- Mobile Lock Message -->
-<div class="mobile-lock">
-    <div class="mobile-lock-content">
-        <i class="fas fa-mobile-alt"></i>
-        <h2>Desktop Only</h2>
-        <p>Games are currently only available on desktop computers for the best gaming experience.</p>
-        <p>Please access this page from a desktop or laptop device.</p>
+<div class="user-content">
+    <div class="user-page-header">
+        <h1>Games</h1>
+    </div>
+
+    <div class="games-section">
+        <h2>Game List</h2>
+        {% if games %}
+            <div class="games-list">
+                {% for game in games %}
+                <div class="game-item">
+                    <h3>{{ game.title }}</h3>
+                    <p>{{ game.description or 'Enjoy this exciting game!' }}</p>
+                    <a href="{{ game.url }}" class="btn">Play Now</a>
+                </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>No games available at the moment.</p>
+        {% endif %}
     </div>
 </div>
 
-<!-- Desktop Content -->
-<div class="desktop-content">
-    <div class="user-content">
-        <div class="games-header">
-            <h2>Available Games</h2>
-            <p>Choose a game to play and have fun!</p>
-        </div>
-        <div class="games-grid">
-            {% for game in games %}
-            <div class="game-card">
-                <div class="game-image">
-                    {% if game.image %}
-                    <img src="{{ game.image }}" alt="{{ game.title }}">
-                    {% else %}
-                    <div class="game-placeholder">
-                        <i class="fas fa-gamepad"></i>
-                    </div>
-                    {% endif %}
-                </div>
-                <div class="game-info">
-                    <h3>{{ game.title }}</h3>
-                    <p>{{ game.description or 'Enjoy this exciting game!' }}</p>
-                    <a href="{{ game.url }}" class="btn btn-primary">Play Now</a>
-                </div>
-            </div>
-            {% endfor %}
-            {% if not games %}
-            <div class="no-games">
-                <p>No games available at the moment.</p>
-            </div>
-            {% endif %}
-        </div>
     </div>
 </div>
 {% endblock %}
+

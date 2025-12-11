@@ -26,7 +26,9 @@ def user_dashboard():
     if session.get('role') == 'admin':
         return redirect(url_for('admin.admin_dashboard'))
     user = models.get_user_by_id(session.get('user_id'))
-    return render_template('user_dashboard.html', user=user)
+    # For now, no recent game data - can be implemented later
+    recent_game = None
+    return render_template('user_dashboard.html', user=user, recent_game=recent_game)
 
 
 @user_bp.route('/profile')

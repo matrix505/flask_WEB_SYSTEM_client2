@@ -2,45 +2,53 @@
 
 {% block title %}Dashboard{% endblock %}
 
-
-
 {% block content %}
-<div class="user-content minimal-dashboard">
-    <div class="dashboard-header">
-        <span class="dashboard-greeting">Hi, {{ user.firstname }}</span>
+<div class="user-content">
+    <div class="user-page-header">
+        <h1>Dashboard</h1>
     </div>
-    <div class="dashboard-cards">
-        <div class="card account-details">
-            <div class="account-avatar">{{ user.firstname[0] }}</div>
-            <div class="card-body">
-                <div class="card-title">{{ user.firstname }} {{ user.lastname }}</div>
-                <div class="card-sub">@{{ user.username }}</div>
-                <div class="account-info">
-                    <div><strong>Email:</strong> {{ user.email }}</div>
-                    <div><strong>Contact:</strong> {{ user.contact or '—' }}</div>
-                    <div><strong>Birthday:</strong> {{ user.birthday or '—' }}</div>
+
+    <div class="user-info-section">
+        <h2>Your Information</h2>
+        <table class="user-info-table">
+            <tbody>
+                <tr>
+                    <td class="info-label"><strong>Name:</strong></td>
+                    <td class="info-value">{{ user.firstname }} {{ user.lastname }}</td>
+                </tr>
+                <tr>
+                    <td class="info-label"><strong>Username:</strong></td>
+                    <td class="info-value">@{{ user.username }}</td>
+                </tr>
+                <tr>
+                    <td class="info-label"><strong>Email:</strong></td>
+                    <td class="info-value">{{ user.email }}</td>
+                </tr>
+                <tr>
+                    <td class="info-label"><strong>Contact:</strong></td>
+                    <td class="info-value">{{ user.contact or 'Not provided' }}</td>
+                </tr>
+                <tr>
+                    <td class="info-label"><strong>Birthday:</strong></td>
+                    <td class="info-value">{{ user.birthday or 'Not provided' }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="user-games-section">
+        <h2>Recent Activity</h2>
+        <div class="games-info">
+            {% if recent_game %}
+                <div class="info-item">
+                    <strong>Last Game Played:</strong> {{ recent_game.title }}
                 </div>
-            </div>
-        </div>
-        <div class="card recent-games">
-            <div class="game-avatar">
-                <i class="fas fa-gamepad"></i>
-            </div>
-            <div class="card-body">
-                <div class="card-title">Recent Game Played</div>
-                <div class="card-sub">
-                    {% if recent_game %}
-                        {{ recent_game.title }}
-                    {% else %}
-                        No recent games played
-                    {% endif %}
+                <div class="info-item">
+                    <strong>Last Played:</strong> {{ recent_game.last_played }}
                 </div>
-                {% if recent_game %}
-                <div class="game-info">
-                    <div><strong>Last Played:</strong> {{ recent_game.last_played }}</div>
-                </div>
-                {% endif %}
-            </div>
+            {% else %}
+                <div class="info-item">No recent games played</div>
+            {% endif %}
         </div>
     </div>
 </div>
