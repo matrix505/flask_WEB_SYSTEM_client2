@@ -1554,8 +1554,8 @@ a {
 }
 
 .games-list {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 16px;
 }
 
@@ -1590,6 +1590,10 @@ a {
 @media (max-width: 768px) {
     .games-section {
         padding: 16px;
+    }
+    
+    .games-list {
+        grid-template-columns: 1fr;
     }
     
     .game-item {
