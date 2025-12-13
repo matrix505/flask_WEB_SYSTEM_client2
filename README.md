@@ -2,6 +2,8 @@
 
 A comprehensive Flask-based web application featuring user authentication, admin panel, mini-games, and email OTP verification system.
 
+for the web documentation : https://github.com/matrix505/flask_WEB_SYSTEM_client2
+
 ## Table of Contents
 - [Features](#features)
 - [Project Structure](#project-structure)
