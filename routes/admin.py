@@ -38,8 +38,9 @@ def admin_dashboard():
 @admin_required
 def admin_users():
     """Admin users management"""
-    users = models.get_all_users()
-    return render_template('admin_users.html', users=users)
+    active_users = models.get_active_users()
+    inactive_users = models.get_inactive_users()
+    return render_template('admin_users.html', active_users=active_users, inactive_users=inactive_users)
 
 @admin_bp.route('/add-user', methods=['GET', 'POST'])
 @admin_required

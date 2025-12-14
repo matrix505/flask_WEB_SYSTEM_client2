@@ -15,62 +15,128 @@
             </a>
         </div>
         
-        <div class="admin-table-container">
-            <table class="admin-table">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Username</th>
-                        <th>Full Name</th>
-                        <th>Email</th>
-                        <th>Contact</th>
-                        <th>Role</th>
-                        <th>Status</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for u in users %}
-                    <tr>
-                        <td>{{ u.id }}</td>
-                        <td>{{ u.username }}</td>
-                        <td>{{ u.firstname }} {{ u.middlename or '' }} {{ u.lastname }}</td>
-                        <td>{{ u.email }}</td>
-                        <td>{{ u.contact }}</td>
-                        <td>
-                            <span class="badge {% if u.role == 'admin' %}badge-admin{% else %}badge-user{% endif %}">
-                                {{ u.role|capitalize }}
-                            </span>
-                        </td>
-                        <td>
-                            <span class="badge {% if u.is_active %}badge-active{% else %}badge-inactive{% endif %}">
-                                {% if u.is_active %}Active{% else %}Inactive{% endif %}
-                            </span>
-                        </td>
-                        <td class="action-buttons">
-                            <a href="{{ url_for('admin.admin_edit_user', user_id=u.id) }}" class="btn btn-xs btn-edit" title="Edit">
-                                <i class="fas fa-edit"></i>
-                            </a>
-                            <a href="{{ url_for('admin.admin_toggle_user', user_id=u.id) }}" 
-                               class="btn btn-xs {% if u.is_active %}btn-warning{% else %}btn-success{% endif %}"
-                               title="{% if u.is_active %}Deactivate{% else %}Activate{% endif %}"
-                               data-confirm="{% if u.is_active %}Deactivate{% else %}Activate{% endif %} user '{{ u.username }}'?"
-                               data-title="{% if u.is_active %}Deactivate{% else %}Activate{% endif %} User"
-                               data-btn-class="{% if u.is_active %}btn-warning{% else %}btn-success{% endif %}">
-                                <i class="fas {% if u.is_active %}fa-user-slash{% else %}fa-user-check{% endif %}"></i>
-                            </a>
-                            <a href="{{ url_for('admin.admin_delete_user', user_id=u.id) }}" 
-                               class="btn btn-xs btn-danger" title="Delete"
-                               data-confirm="Delete user '{{ u.username }}'? This cannot be undone!"
-                               data-title="Delete User"
-                               data-btn-class="btn-danger">
-                                <i class="fas fa-trash"></i>
-                            </a>
-                        </td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+        <!-- Active Users Section -->
+        <div class="users-section">
+            <h3 class="section-title">
+                <i class="fas fa-users"></i> Active Users
+            </h3>
+            <div class="admin-table-container">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Username</th>
+                            <th>Full Name</th>
+                            <th>Email</th>
+                            <th>Contact</th>
+                            <th>Role</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for u in active_users %}
+                        <tr>
+                            <td>{{ u.id }}</td>
+                            <td>{{ u.username }}</td>
+                            <td>{{ u.firstname }} {{ u.middlename or '' }} {{ u.lastname }}</td>
+                            <td>{{ u.email }}</td>
+                            <td>{{ u.contact }}</td>
+                            <td>
+                                <span class="badge {% if u.role == 'admin' %}badge-admin{% else %}badge-user{% endif %}">
+                                    {{ u.role|capitalize }}
+                                </span>
+                            </td>
+                            <td>
+                                <span class="badge badge-active">Active</span>
+                            </td>
+                            <td class="action-buttons">
+                                <a href="{{ url_for('admin.admin_edit_user', user_id=u.id) }}" class="btn btn-xs btn-edit" title="Edit">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <a href="{{ url_for('admin.admin_toggle_user', user_id=u.id) }}" 
+                                   class="btn btn-xs btn-warning"
+                                   title="Deactivate"
+                                   data-confirm="Deactivate user '{{ u.username }}'?"
+                                   data-title="Deactivate User"
+                                   data-btn-class="btn-warning">
+                                    <i class="fas fa-user-slash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        {% if not active_users %}
+                        <tr>
+                            <td colspan="8" class="no-data">No active users found.</td>
+                        </tr>
+                        {% endif %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <!-- Archived Users Section -->
+        <div class="users-section archived-section">
+            <h3 class="section-title">
+                <i class="fas fa-archive"></i> Archived Users
+            </h3>
+            <div class="admin-table-container">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Username</th>
+                            <th>Full Name</th>
+                            <th>Email</th>
+                            <th>Contact</th>
+                            <th>Role</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for u in inactive_users %}
+                        <tr>
+                            <td>{{ u.id }}</td>
+                            <td>{{ u.username }}</td>
+                            <td>{{ u.firstname }} {{ u.middlename or '' }} {{ u.lastname }}</td>
+                            <td>{{ u.email }}</td>
+                            <td>{{ u.contact }}</td>
+                            <td>
+                                <span class="badge {% if u.role == 'admin' %}badge-admin{% else %}badge-user{% endif %}">
+                                    {{ u.role|capitalize }}
+                                </span>
+                            </td>
+                            <td>
+                                <span class="badge badge-inactive">Archived</span>
+                            </td>
+                            <td class="action-buttons">
+                                <a href="{{ url_for('admin.admin_toggle_user', user_id=u.id) }}" 
+                                   class="btn btn-xs btn-success"
+                                   title="Activate"
+                                   data-confirm="Activate user '{{ u.username }}'?"
+                                   data-title="Activate User"
+                                   data-btn-class="btn-success">
+                                    <i class="fas fa-user-check"></i>
+                                </a>
+                                <a href="{{ url_for('admin.admin_delete_user', user_id=u.id) }}" 
+                                   class="btn btn-xs btn-danger" title="Delete"
+                                   data-confirm="Delete user '{{ u.username }}'? This cannot be undone!"
+                                   data-title="Delete User"
+                                   data-btn-class="btn-danger">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        {% if not inactive_users %}
+                        <tr>
+                            <td colspan="8" class="no-data">No archived users found.</td>
+                        </tr>
+                        {% endif %}
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>

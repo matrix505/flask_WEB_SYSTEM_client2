@@ -55,6 +55,16 @@ def get_all_users():
     query = "SELECT * FROM users ORDER BY id DESC"
     return execute_query(query, fetch=True)
 
+def get_active_users():
+    """Get only active users from database"""
+    query = "SELECT * FROM users WHERE is_active = 1 ORDER BY id DESC"
+    return execute_query(query, fetch=True)
+
+def get_inactive_users():
+    """Get only inactive users from database"""
+    query = "SELECT * FROM users WHERE is_active = 0 ORDER BY id DESC"
+    return execute_query(query, fetch=True)
+
 def update_user(user_id, firstname, middlename, lastname, birthday, contact, email):
     """Update user profile information"""
     query = """

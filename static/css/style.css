@@ -45,7 +45,7 @@ a {
 
 .modal-header i {
     font-size: 40px;
-    color: #006400;
+    color: #c2185b;
     margin-bottom: 10px;
 }
 
@@ -98,7 +98,7 @@ a {
 
 .nav-toggle {
     display: none;
-    background: #007bff;
+    background: #e91e63;
     border: none;
     color: #ffffff;
     font-size: 20px;
@@ -107,7 +107,7 @@ a {
 }
 
 .nav-toggle:hover {
-    background: #0056b3;
+    background: #c2185b;
 }
 
 .nav-links {
@@ -133,7 +133,7 @@ a {
 .nav-links a:hover,
 .nav-links a:active {
     background-color: #f8f9fa;
-    color: #007bff;
+    color: #e91e63;
 }
 
 .nav-links a i {
@@ -165,7 +165,7 @@ a {
 }
 
 .flash-message.success {
-    background-color: #006400;
+    background-color: #c2185b;
 }
 
 .flash-message.error {
@@ -215,13 +215,13 @@ a {
 }
 
 .flash-message.success {
-    background: #28a745;
+    background: #e91e63;
 }
 .flash-message.error {
     background: #dc3545;
 }
 .flash-message.info {
-    background: #007bff;
+    background: #e91e63;
 }
 
 .flash-message .close-btn {
@@ -437,12 +437,12 @@ a {
 }
 
 .btn-primary {
-    background-color: #006400;
+    background-color: #c2185b;
     color: #fff;
 }
 
 .btn-primary:hover {
-    background-color: #004d00;
+    background-color: #880e4f;
 }
 
 .btn-secondary {
@@ -575,7 +575,7 @@ a {
 
 .form-field input:focus {
     outline: none;
-    border-color: #007bff;
+    border-color: #e91e63;
     background: #ffffff;
 }
 
@@ -633,14 +633,14 @@ a {
     font-weight: 600;
     font-family: Arial, sans-serif;
     color: #ffffff;
-    background: #007bff;
+    background: #e91e63;
     border: none;
     cursor: pointer;
     margin-top: 12px;
 }
 
 .auth-btn:hover {
-    background: #0056b3;
+    background: #c2185b;
 }
 
 /* Divider */
@@ -675,13 +675,13 @@ a {
 }
 
 .auth-link a {
-    color: #007bff;
+    color: #e91e63;
     font-weight: 600;
     text-decoration: none;
 }
 
 .auth-link a:hover {
-    color: #0056b3;
+    color: #c2185b;
     text-decoration: none;
 }
 
@@ -698,14 +698,14 @@ a {
 }
 
 .auth-footer-otp a {
-    color: #007bff;
+    color: #e91e63;
     font-weight: 600;
     text-decoration: none;
     transition: color 0.2s;
 }
 
 .auth-footer-otp a:hover {
-    color: #0056b3;
+    color: #c2185b;
 }
 
 .auth-footer-otp .otp-expire {
@@ -752,7 +752,7 @@ a {
 
 .auth-header i {
     font-size: 50px;
-    color: #006400;
+    color: #c2185b;
     margin-bottom: 10px;
 }
 
@@ -793,7 +793,7 @@ a {
 }
 
 .auth-footer a {
-    color: #006400;
+    color: #c2185b;
     font-weight: 600;
 }
 
@@ -851,7 +851,7 @@ a {
 .admin-logo .logo-icon {
     width: 32px;
     height: 32px;
-    background: #28a745;
+    background: #e91e63;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -889,7 +889,7 @@ a {
 
 .admin-nav-link.active {
     background: #f5f5f5;
-    color: #006400;
+    color: #c2185b;
 }
 
 .admin-nav-link i {
@@ -947,7 +947,7 @@ a {
 .admin-avatar {
     width: 32px;
     height: 32px;
-    background: #28a745;
+    background: #e91e63;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1058,7 +1058,7 @@ a {
 .admin-avatar-lg {
     width: 60px;
     height: 60px;
-    background: #28a745;
+    background: #e91e63;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1096,7 +1096,7 @@ a {
 
 .mobile-nav-item.active {
     background: #f5f5f5;
-    color: #006400;
+    color: #c2185b;
 }
 
 .mobile-nav-item i {
@@ -1164,7 +1164,7 @@ a {
 .admin-card-icon {
     width: 26px;
     height: 26px;
-    background: #28a745;
+    background: #e91e63;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1196,7 +1196,7 @@ a {
     align-items: center;
     gap: 4px;
     font-size: 11px;
-    color: #006400;
+    color: #c2185b;
     font-weight: 500;
     text-decoration: none;
 }
@@ -1266,7 +1266,7 @@ a {
 .user-avatar {
     width: 36px;
     height: 36px;
-    background: #28a745;
+    background: #e91e63;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1316,7 +1316,7 @@ a {
 }
 
 .btn-icon:hover {
-    background: #006400;
+    background: #c2185b;
     color: #fff;
 }
 
@@ -1346,7 +1346,7 @@ a {
 }
 
 .admin-form .form-group label i {
-    color: #006400;
+    color: #c2185b;
     margin-right: 6px;
 }
 
@@ -1365,7 +1365,7 @@ a {
 .admin-form .form-group select:focus,
 .admin-form .form-group textarea:focus {
     outline: none;
-    border-color: #006400;
+    border-color: #c2185b;
 }
 
 .admin-form .form-group input:disabled {
@@ -1404,7 +1404,7 @@ a {
 }
 
 .admin-section-header h2 i {
-    color: #006400;
+    color: #c2185b;
     margin-right: 10px;
 }
 
@@ -1432,21 +1432,122 @@ a {
     }
 }
 
-/* Admin Responsive */
-@media (max-width: 900px) {
-    .admin-nav-center {
-        display: none;
+/* Simple Content Form */
+.simple-content-form {
+    background: #fff;
+    padding: 24px;
+    border-radius: 4px;
+}
+
+.simple-form-section {
+    margin-bottom: 32px;
+}
+
+.simple-form-section:last-child {
+    margin-bottom: 0;
+}
+
+.simple-form-section h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #eee;
+}
+
+.simple-form-group {
+    margin-bottom: 20px;
+}
+
+.simple-form-group label {
+    display: block;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.simple-form-group input,
+.simple-form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.simple-form-group input:focus,
+.simple-form-group textarea:focus {
+    outline: none;
+    border-color: #e91e63;
+}
+
+.simple-form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.simple-form-buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+/* Simple Content Form Mobile */
+@media (max-width: 768px) {
+    .simple-content-form {
+        padding: 16px;
     }
-    
-    .admin-menu-toggle {
-        display: flex;
+
+    .simple-form-buttons {
+        flex-direction: column;
+    }
+
+    .simple-form-buttons .btn {
+        width: 100%;
+        text-align: center;
     }
 }
 
-@media (max-width: 600px) {
-    .admin-navbar {
-        padding: 0 16px;
-    }
+/* User Management Sections */
+.users-section {
+    margin-bottom: 40px;
+}
+
+.users-section:last-child {
+    margin-bottom: 0;
+}
+
+.section-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #e91e63;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.section-title i {
+    color: #e91e63;
+}
+
+.archived-section .section-title {
+    border-bottom-color: #95a5a6;
+}
+
+.archived-section .section-title i {
+    color: #95a5a6;
+}
+
+.no-data {
+    text-align: center;
+    color: #666;
+    font-style: italic;
+    padding: 20px;
+}
     
     .admin-logo .logo-text {
         display: none;
@@ -1583,7 +1684,7 @@ a {
 .game-item .btn {
     display: inline-block;
     padding: 8px 16px;
-    background: #007bff;
+    background: #e91e63;
     color: #fff;
     text-decoration: none;
     border-radius: 4px;
@@ -1659,11 +1760,11 @@ a {
 }
 
 .btn-success {
-    background: #28a745;
+    background: #e91e63;
 }
 
 .btn-success:hover {
-    background: #218838;
+    background: #ad1457;
 }
 
 .btn-danger {
@@ -1710,7 +1811,7 @@ a {
 .profile-actions .btn {
     display: inline-block;
     padding: 8px 16px;
-    background: #007bff;
+    background: #e91e63;
     color: #fff;
     text-decoration: none;
     border-radius: 4px;
@@ -1725,7 +1826,7 @@ a {
 .profile-actions .btn {
     display: inline-block;
     padding: 8px 16px;
-    background: #007bff;
+    background: #e91e63;
     color: #fff;
     text-decoration: none;
     border-radius: 4px;
@@ -1780,7 +1881,7 @@ a {
 .user-logo .logo-icon {
     width: 32px;
     height: 32px;
-    background: #28a745;
+    background: #e91e63;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1818,7 +1919,7 @@ a {
 
 .user-nav-link.active {
     background: rgba(157, 193, 131, 0.2);
-    color: #006400;
+    color: #c2185b;
 }
 
 .user-nav-link i {
@@ -1866,7 +1967,7 @@ a {
 .user-avatar {
     width: 32px;
     height: 32px;
-    background: #28a745;
+    background: #e91e63;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1878,7 +1979,7 @@ a {
 .user-avatar-lg {
     width: 56px;
     height: 56px;
-    background: #28a745;
+    background: #e91e63;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -2003,7 +2104,7 @@ a {
 .user-card-icon {
     width: 52px;
     height: 52px;
-    background: #28a745;
+    background: #e91e63;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -2012,7 +2113,7 @@ a {
 }
 
 .user-card-icon.games {
-    background: #007bff;
+    background: #e91e63;
 }
 
 .user-card-icon.home {
@@ -2057,7 +2158,7 @@ a {
 }
 
 .info-card-header h2 i {
-    color: #006400;
+    color: #c2185b;
     margin-right: 10px;
 }
 
@@ -2131,7 +2232,7 @@ a {
 }
 
 .user-section-header h2 i {
-    color: #006400;
+    color: #c2185b;
     margin-right: 10px;
 }
 
@@ -2276,7 +2377,7 @@ a {
 }
 
 .sidebar-header i {
-    color: #006400;
+    color: #c2185b;
 }
 
 .sidebar-header h3 {
@@ -2308,7 +2409,7 @@ a {
 }
 
 .nav-item.active {
-    background-color: #006400;
+    background-color: #c2185b;
     color: #fff;
 }
 
@@ -2356,7 +2457,7 @@ a {
 }
 
 .card:hover {
-    border-color: #006400;
+    border-color: #c2185b;
 }
 
 .card-icon {
@@ -2373,7 +2474,7 @@ a {
 }
 
 .card-icon.admin-icon {
-    background-color: #006400;
+    background-color: #c2185b;
     color: #fff;
 }
 
@@ -2392,7 +2493,7 @@ a {
 .card-content .big-number {
     font-size: 28px;
     font-weight: bold;
-    color: #006400;
+    color: #c2185b;
 }
 
 /* Badges */
@@ -2415,7 +2516,7 @@ a {
 }
 
 .badge-active {
-    background-color: #006400;
+    background-color: #c2185b;
     color: #fff;
 }
 
@@ -2518,7 +2619,7 @@ a {
 
 .profile-form input:focus, .profile-form select:focus, .profile-form textarea:focus {
     outline: none;
-    border-color: #006400;
+    border-color: #c2185b;
 }
 
 .profile-form input:disabled {
@@ -2570,7 +2671,7 @@ a {
 
 .error-content h1 {
     font-size: 60px;
-    color: #006400;
+    color: #c2185b;
     margin-bottom: 8px;
 }
 
@@ -2605,7 +2706,7 @@ a {
 }
 
 .games-header h1 i {
-    color: #006400;
+    color: #c2185b;
     margin-right: 10px;
 }
 
@@ -2626,7 +2727,7 @@ a {
 }
 
 .coming-soon-box i {
-    color: #006400;
+    color: #c2185b;
     margin-bottom: 20px;
 }
 
@@ -2685,7 +2786,7 @@ a {
     
     .nav-links a:hover {
         background-color: #e9ecef;
-        color: #007bff;
+        color: #e91e63;
     }
     
     .nav-links .nav-games-btn {
