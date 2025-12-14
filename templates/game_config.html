@@ -1,0 +1,23 @@
+{% extends 'admin_base.html' %}
+
+{% block content %}
+<div class="admin-content">
+    <div class="admin-page-header">
+        <h1>Game Configuration</h1>
+    </div>
+
+    <div class="admin-section">
+        <div class="simple-games-list">
+            {% for game in games %}
+            <div class="simple-game-item">
+                <span class="game-title">{{ game.title }}</span>
+                <a href="{{ url_for('admin.toggle_game', game_id=game.id) }}" 
+                   class="btn btn-small {% if game.is_enabled %}btn-danger{% else %}btn-success{% endif %}">
+                    {{ 'Disable' if game.is_enabled else 'Enable' }}
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

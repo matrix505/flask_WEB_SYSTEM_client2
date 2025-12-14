@@ -69,60 +69,33 @@ def edit_profile():
 @login_required
 def games():
     """Games page - only for verified users"""
-    # Sample games data - replace with actual database query when games are implemented
-    games_data = [
-        {
-            'id': 1,
-            'title': 'Tic-Tac-Toe',
-            'description': 'Classic tic-tac-toe game for two players.',
-            'image': '/static/images/tic_tac_toe.jpg',
-            'url': '/play/tic_tac_toe'
-        },
-        {
-            'id': 2,
-            'title': 'Rock Paper Scissors',
-            'description': 'Play rock paper scissors against the computer.',
-            'image': '/static/images/rock_paper_scissors.jpg',
-            'url': '/play/rock_paper_scissors'
-        },
-        {
-            'id': 3,
-            'title': 'Number Guessing',
-            'description': 'Guess the secret number between 1 and 100.',
-            'image': '/static/images/number_guessing.jpg',
-            'url': '/play/number_guessing'
-        },
-        {
-            'id': 4,
-            'title': 'Simple Pong',
-            'description': 'A simple pong game with paddle and ball.',
-            'image': '/static/images/simple_pong.jpg',
-            'url': '/play/simple_pong'
-        },
-        {
-            'id': 5,
-            'title': 'Memory Match',
-            'description': 'Match pairs of cards in this memory game.',
-            'image': '/static/images/memory_match.jpg',
-            'url': '/play/memory_match'
-        }
-    ]
+    games_data = models.get_enabled_games()
     return render_template('games.html', games=games_data)
 
 @user_bp.route('/play/<game>')
 @login_required
 def play_game(game):
     """Launch the selected game"""
-    game_files = {
-        'tic_tac_toe': 'tic_tac_toe.py',
-        'rock_paper_scissors': 'rock_paper_scissors.py',
-        'number_guessing': 'number_guessing.py',
-        'simple_pong': 'simple_pong.py',
-        'memory_match': 'memory_match.py'
-    }
-    if game in game_files:
-        subprocess.Popen(['python', f'games/{game_files[game]}'])
-        flash(f'Launching {game.replace("_", " ").title()}...', 'success')
+    game_obj = models.get_game_by_id(game)  # Assuming game is id, but wait, it's name
+    # Actually, the url is /play/tic_tac_toe, so game is the name
+    # Need to get game by name
+    # Add function to get by name
+    # For now, check if enabled by finding the game
+    games = models.get_enabled_games()
+    game_names = [g['name'] for g in games]
+    if game in game_names:
+        game_files = {
+            'tic_tac_toe': 'tic_tac_toe.py',
+            'rock_paper_scissors': 'rock_paper_scissors.py',
+            'number_guessing': 'number_guessing.py',
+            'simple_pong': 'simple_pong.py',
+            'memory_match': 'memory_match.py'
+        }
+        if game in game_files:
+            subprocess.Popen(['python', f'games/{game_files[game]}'])
+            flash(f'Launching {game.replace("_", " ").title()}...', 'success')
+        else:
+            flash('Game not found!', 'error')
     else:
-        flash('Game not found!', 'error')
+        flash('Game is currently disabled!', 'error')
     return redirect(url_for('user.games'))

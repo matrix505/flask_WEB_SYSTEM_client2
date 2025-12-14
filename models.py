@@ -194,3 +194,35 @@ def update_site_content(content_key, content_value):
         ON DUPLICATE KEY UPDATE content_value = %s
     """
     return execute_query(query, (content_key, content_value, content_value))
+
+# ============ GAME OPERATIONS ============
+
+def get_all_games():
+    """Get all games from database"""
+    query = "SELECT * FROM games ORDER BY id"
+    return execute_query(query, fetch=True)
+
+def get_enabled_games():
+    """Get only enabled games"""
+    query = "SELECT * FROM games WHERE is_enabled = 1 ORDER BY id"
+    return execute_query(query, fetch=True)
+
+def get_game_by_id(game_id):
+    """Get game by ID"""
+    query = "SELECT * FROM games WHERE id = %s"
+    return execute_one(query, (game_id,))
+
+def get_game_by_name(game_name):
+    """Get game by name"""
+    query = "SELECT * FROM games WHERE name = %s"
+    return execute_one(query, (game_name,))
+
+def toggle_game_status(game_id):
+    """Toggle game enabled/disabled status"""
+    game = get_game_by_id(game_id)
+    if game:
+        new_status = 0 if game['is_enabled'] == 1 else 1
+        query = "UPDATE games SET is_enabled = %s WHERE id = %s"
+        execute_query(query, (new_status, game_id))
+        return new_status
+    return None

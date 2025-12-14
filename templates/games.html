@@ -8,6 +8,9 @@
 <div class="user-content">
     <div class="user-page-header">
         <h1>Games</h1>
+        {% if session.get('role') == 'admin' %}
+        <a href="{{ url_for('admin.game_config') }}" class="btn btn-small btn-secondary">Game Config</a>
+        {% endif %}
     </div>
 
     <div class="games-section">

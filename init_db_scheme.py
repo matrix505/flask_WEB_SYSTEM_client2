@@ -1,5 +1,8 @@
 # setup_database.py - Run this to create the database tables
 import mysql.connector
+from dotenv import load_dotenv
+load_dotenv()
+
 from config import DB_CONFIG
 import hashlib
 
@@ -99,6 +102,18 @@ def setup_database():
             content_value TEXT,
             updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
         )
+        """,
+        """
+        CREATE TABLE IF NOT EXISTS games (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            name VARCHAR(50) UNIQUE NOT NULL,
+            title VARCHAR(100) NOT NULL,
+            description TEXT,
+            image VARCHAR(255),
+            url VARCHAR(255) NOT NULL,
+            is_enabled TINYINT(1) DEFAULT 1,
+            created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+        )
         """
     ]
     
@@ -146,6 +161,25 @@ def setup_database():
         except mysql.connector.IntegrityError:
             pass
     print("Default site content added!")
+    
+    # Insert default games
+    games_data = [
+        ('tic_tac_toe', 'Tic-Tac-Toe', 'Classic tic-tac-toe game for two players.', '/static/images/tic_tac_toe.jpg', '/play/tic_tac_toe'),
+        ('rock_paper_scissors', 'Rock Paper Scissors', 'Play rock paper scissors against the computer.', '/static/images/rock_paper_scissors.jpg', '/play/rock_paper_scissors'),
+        ('number_guessing', 'Number Guessing', 'Guess the secret number between 1 and 100.', '/static/images/number_guessing.jpg', '/play/number_guessing'),
+        ('simple_pong', 'Simple Pong', 'A simple pong game with paddle and ball.', '/static/images/simple_pong.jpg', '/play/simple_pong'),
+        ('memory_match', 'Memory Match', 'Match pairs of cards in this memory game.', '/static/images/memory_match.jpg', '/play/memory_match')
+    ]
+    
+    for name, title, desc, img, url in games_data:
+        try:
+            cursor.execute("""
+                INSERT INTO games (name, title, description, image, url, is_enabled)
+                VALUES (%s, %s, %s, %s, %s, 1)
+            """, (name, title, desc, img, url))
+        except mysql.connector.IntegrityError:
+            pass
+    print("Default games added!")
     
     conn.commit()
     cursor.close()

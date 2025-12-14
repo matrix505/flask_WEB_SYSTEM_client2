@@ -180,6 +180,25 @@ def admin_content():
     content = models.get_site_content()
     return render_template('admin_content.html', content=content, now=int(time.time()))
 
+@admin_bp.route('/game-config')
+@admin_required
+def game_config():
+    """Admin game configuration page"""
+    games = models.get_all_games()
+    return render_template('game_config.html', games=games)
+
+@admin_bp.route('/toggle-game/<int:game_id>')
+@admin_required
+def toggle_game(game_id):
+    """Admin toggle game enable/disable"""
+    new_status = models.toggle_game_status(game_id)
+    if new_status is not None:
+        status_text = 'enabled' if new_status == 1 else 'disabled'
+        flash(f'Game {status_text} successfully!', 'success')
+    else:
+        flash('Game not found!', 'error')
+    return redirect(url_for('admin.game_config'))
+
 @admin_bp.route('/upload-profile', methods=['POST'])
 @admin_required
 def admin_upload_profile():
