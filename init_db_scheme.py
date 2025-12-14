@@ -166,7 +166,7 @@ def setup_database():
     games_data = [
         ('tic_tac_toe', 'Tic-Tac-Toe', 'Classic tic-tac-toe game for two players.', '/static/images/tic_tac_toe.jpg', '/play/tic_tac_toe'),
         ('rock_paper_scissors', 'Rock Paper Scissors', 'Play rock paper scissors against the computer.', '/static/images/rock_paper_scissors.jpg', '/play/rock_paper_scissors'),
-        ('number_guessing', 'Number Guessing', 'Guess the secret number between 1 and 100.', '/static/images/number_guessing.jpg', '/play/number_guessing'),
+        ('mouse_click_game', 'Mouse Click Game', 'Click as fast as you can within 10 seconds to beat the highscore!', '/static/images/mouse_click_game.jpg', '/play/mouse_click_game'),
         ('simple_pong', 'Simple Pong', 'A simple pong game with paddle and ball.', '/static/images/simple_pong.jpg', '/play/simple_pong'),
         ('memory_match', 'Memory Match', 'Match pairs of cards in this memory game.', '/static/images/memory_match.jpg', '/play/memory_match')
     ]
